@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-15T11:21:51-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kysk3</name></author><entry><title type="html">Presidential 1 - VulnHub</title><link href="http://localhost:4000/presidential/" rel="alternate" type="text/html" title="Presidential 1 - VulnHub" /><published>2025-11-12T00:00:00-05:00</published><updated>2025-11-12T00:00:00-05:00</updated><id>http://localhost:4000/presidential</id><content type="html" xml:base="http://localhost:4000/presidential/"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-11-26T19:52:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kysk3</name></author><entry><title type="html">Montaje del lab eJPT</title><link href="http://localhost:4000/montaje_eJPt/" rel="alternate" type="text/html" title="Montaje del lab eJPT" /><published>2025-11-26T00:00:00-05:00</published><updated>2025-11-26T00:00:00-05:00</updated><id>http://localhost:4000/montaje_eJPt</id><content type="html" xml:base="http://localhost:4000/montaje_eJPt/"><![CDATA[<p align="center">
+<img src="/assets/images/eJPT/Arquitectura.png" />
+</p>
+
+<h2 id="descripcion">Descripcion</h2>
+<p>En el examen de la eJPT se proporciona una máquina Kali Linux accesible desde una interfaz web segura. Esta máquina incluye todas las herramientas necesarias para las tareas de reconocimiento, enumeración y explotación, pero se mantiene totalmente aislada y sin acceso a Internet, obligando al candidato a trabajar únicamente con los recursos del entorno.</p>
+
+<p>Esta simulación recrea un entorno similar al del examen, permitiendo practicar con las herramientas preinstaladas y reforzar las habilidades requeridas. El enfoque principal fue desarrollar y ejercitar técnicas de pivoting utilizando Metasploit dentro de un laboratorio compuesto por seis máquinas virtuales.</p>
+
+<h2 id="herramientas-recomendadas-para-la-ejpt">Herramientas recomendadas para la eJPT</h2>
+
+<ul>
+  <li>nmap</li>
+  <li>Dirbuster</li>
+  <li>Nikto</li>
+  <li>WPScan</li>
+  <li>CrackMapExec</li>
+  <li>The Metasploit Framework</li>
+  <li>Searchsploit</li>
+  <li>Hydra</li>
+</ul>
+
+<hr />
+
+<h1 id="plataformas-y-máquinas-utilizadas">Plataformas y Máquinas Utilizadas</h1>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Linux</code>: <strong>Vulnhub</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">Windows</code>: <strong>HackMyVM</strong></li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Software de Virtualización</code>: <strong>VMware Workstation Pro</strong></p>
+  </li>
+  <li><strong>Symfonos</strong>: https://www.vulnhub.com/entry/symfonos-1,322/</li>
+  <li><strong>Quoted</strong>: https://hackmyvm.eu/machines/machine.php?vm=quoted</li>
+  <li><strong>Ica 1</strong>: https://www.vulnhub.com/entry/ica-1,748/</li>
+  <li><strong>Venom 1</strong>: https://www.vulnhub.com/entry/venom-1,701/</li>
+  <li><strong>Runas</strong>: https://hackmyvm.eu/machines/machine.php?vm=Runas</li>
+  <li><strong>Durian 1</strong>: https://www.vulnhub.com/entry/durian-1,553/</li>
+</ul>
+
+<hr />
+
+<h1 id="configuración-del-entorno">Configuración del Entorno</h1>
+
+<h2 id="descargar-todas-las-máquinas-virtuales-necesarias">Descargar todas las máquinas virtuales necesarias.</h2>
+
+<p><img src="/assets/images/eJPT/Montaje/All_Machines.png" alt="" /></p>
+
+<h2 id="creacion-de-la-segunda-interfaz-de-red">Creacion de la segunda interfaz de red.</h2>
+
+<p><img src="/assets/images/eJPT/Montaje/Edit_mode.png" alt="" /></p>
+
+<p><img src="/assets/images/eJPT/Montaje/Administrator_Settings.png" alt="" /></p>
+
+<p><img src="/assets/images/eJPT/Montaje/Add_Network.png" alt="" /></p>
+
+<p><img src="/assets/images/eJPT/Montaje/VMnet2.png" alt="" /></p>
+
+<p>Agrega la nueva red VMnet2 con la IP 10.10.0.0/24, luego haz clic en “Aplicar” y finalmente en “OK”.</p>
+
+<h2 id="configuración-de-red-de-las-máquinas">Configuración de Red de las Máquinas</h2>
+
+<ul>
+  <li>Symfonos 1</li>
+</ul>
+
+<p><img src="/assets/images/eJPT/Montaje/Symfonos_1_Settings.png" alt="" /></p>
+
+<p><img src="/assets/images/eJPT/Montaje/Symfonos_1_Conf.png" alt="" /></p>
+
+<ul>
+  <li>Quoted - Ica 1</li>
+</ul>
+
+<p>Primera interfaz de red:</p>
+
+<p><img src="/assets/images/eJPT/Montaje/Quoted_red_1.png" alt="" /></p>
+
+<p>Luego en el apartado de <strong>Add</strong> agregamos otro adaptador de red.</p>
+
+<p>Segunda interfaz de red:</p>
+
+<p><img src="/assets/images/eJPT/Montaje/Quoted_red_2.png" alt="" /></p>
+
+<ul>
+  <li>Venom 1 – Runas – Durian 1</li>
+</ul>
+
+<p><img src="/assets/images/eJPT/Montaje/Durian_1_Red.png" alt="" /></p>]]></content><author><name>Kysk3</name></author><category term="Certificaciones" /><category term="Diseño de Entorno" /><category term="eJPTv2" /><category term="Pentesting Básico" /><category term="Pivoting" /><category term="Laboratorio de Pentesting" /><category term="Redes y Subredes" /><summary type="html"><![CDATA[Creación de un laboratorio inspirado en el eJPT, compuesto por dos subredes y seis máquinas virtuales (dos Windows y cuatro Linux), diseñado para cubrir todos los contenidos esenciales de la certificación.]]></summary></entry><entry><title type="html">Presidential 1 - VulnHub</title><link href="http://localhost:4000/presidential/" rel="alternate" type="text/html" title="Presidential 1 - VulnHub" /><published>2025-11-12T00:00:00-05:00</published><updated>2025-11-12T00:00:00-05:00</updated><id>http://localhost:4000/presidential</id><content type="html" xml:base="http://localhost:4000/presidential/"><![CDATA[<p align="center">
 <img src="/assets/images/vulnHub/presidential_1/casablanca.jpg" />
 </p>
 
