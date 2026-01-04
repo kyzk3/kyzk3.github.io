@@ -38,7 +38,7 @@ Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran com
 
 ## Proximas certificaciones
 
-- eJPT (eLearnSecurity Junior Penetration Tester) (Enero 2026)
+- [eJPT](/assets/certs/Cert-eJPT.png) (eLearnSecurity Junior Penetration Tester) 
 - ICCA (Certified Cloud Associate) (Enero 2026)
 - eWPT (eLearnSecurity Web Application Penetration Tester) (Febrero 2026)
 - CPTS (HTB Certified Penetration Testing Specialist) (Junio 2026)
