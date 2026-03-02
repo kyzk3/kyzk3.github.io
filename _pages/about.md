@@ -12,7 +12,7 @@ date: 2025-11-14
 </p>
 
 <br>
-Mi nombre es Dehymar Torres (alias **Kysk3**). Empecé mis estudios en la carrera de Ingeniería de Sistemas en el año 2021. A inicios del 2024 me empecé a interesar por la ciberseguridad. Al investigar, me empezó a gustar este mundo de la ciberseguridad ofensiva y cómo uno podía vulnerar una máquina entendiendo cómo funcionan los sistemas y cómo pequeños errores pueden derivar en fallas graves de seguridad.
+Mi nombre es Dehymar Torres (alias **Kyzk3**). Empecé mis estudios en la carrera de Ingeniería de Sistemas en el año 2021. A inicios del 2024 me empecé a interesar por la ciberseguridad. Al investigar, me empezó a gustar este mundo de la ciberseguridad ofensiva y cómo uno podía vulnerar una máquina entendiendo cómo funcionan los sistemas y cómo pequeños errores pueden derivar en fallas graves de seguridad.
 
 A la par que estudiaba mi carrera, practicaba conceptos y resolvía máquinas. Al terminar el séptimo ciclo (3 años y medio) en diciembre del 2024, decidí hacer una pausa en mis estudios universitarios y meterme de lleno a la ciberseguridad de forma autodidacta.  
 
@@ -36,11 +36,11 @@ Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran com
 - [Python Ofensivo](/assets/certs/Python-cert.png) 
 
 
-## Proximas certificaciones
+## Certificaciones
 
 - [eJPT](/assets/certs/Cert-eJPT.png) (eLearnSecurity Junior Penetration Tester) 
-- ICCA (Certified Cloud Associate) (Enero 2026)
-- eWPT (eLearnSecurity Web Application Penetration Tester) (Febrero 2026)
+- [ICCA](/assets/certs/Cert-ICCA.png) (Certified Cloud Associate)
+- [eWPT](/assets/certs/Cert-eWPT.png) (eLearnSecurity Web Application Penetration Tester)
 - CPTS (HTB Certified Penetration Testing Specialist) (Junio 2026)
 
 ## Competencias Técnicas
@@ -62,14 +62,17 @@ Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran com
 - **Máster Zero Day (Hackavis)** — Especialización en ciberseguridad.
 
 <br> <br>
-<p align="center">
-<img src="/assets/images/about/Author_Logo.png">
-</p>
+<!-- <p align="center"> -->
+<!-- <img src="/assets/images/about/Author_Logo.png"> -->
+<!-- </p> -->
 
-## Experiencia
+<!-- ## Experiencia 
 
 Coming soon
+-->
 
 # Correo y contacto directo
 
-Coming soon
+Si quieres comunicarte conmigo, puedes hacerlo a través de: <br><br>
+**Correo electrónico:** `dehymartorres@proton.me` <br>
+**Linkedin:** `https://www.linkedin.com/in/dehymar-torres/` <br>
