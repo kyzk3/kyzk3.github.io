@@ -1,4 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-20T21:34:24-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">eWPT Review 2026</title><link href="http://localhost:4000/eWPT/" rel="alternate" type="text/html" title="eWPT Review 2026" /><published>2026-04-19T00:00:00-05:00</published><updated>2026-04-19T00:00:00-05:00</updated><id>http://localhost:4000/eWPT</id><content type="html" xml:base="http://localhost:4000/eWPT/"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-21T12:04:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">ICCA Review 2026</title><link href="http://localhost:4000/ICCA/" rel="alternate" type="text/html" title="ICCA Review 2026" /><published>2026-04-21T00:00:00-05:00</published><updated>2026-04-21T00:00:00-05:00</updated><id>http://localhost:4000/ICCA</id><content type="html" xml:base="http://localhost:4000/ICCA/"><![CDATA[<p align="center">
+<img src="/assets/certs/Cert-ICCA.png" />
+</p>
+
+<h2 id="cómo-es-el-examen">¿Cómo es el examen?</h2>
+
+<p>El examen de la certificación <strong>ICCA</strong> tiene una duración de 1 hora y media y consta de 46 preguntas tipo test junto con 4 objetivos prácticos en laboratorio. Evalúa conceptos fundamentales de computación en la nube y el uso de plataformas como Amazon Web Services, Microsoft Azure y Google Cloud Platform. Incluye temas como modelos de servicio (<strong>IaaS, PaaS, SaaS</strong>), redes, almacenamiento, seguridad e identidades, además de requerir que comprendas cómo crear y gestionar recursos básicos como máquinas virtuales, almacenamiento y configuraciones de acceso.</p>
+
+<h2 id="material-de-estudio">Material de estudio</h2>
+
+<p>Para poder dar el examen usé el recurso que ofrece <strong>INE</strong>, que son casi 16 horas de material organizadas en módulos y algunos laboratorios. Si quieres dar esta certificación y no sabes nada de la nube, considero que este recurso es muy bueno explicando desde cero: cómo funciona la arquitectura cloud, los 3 proveedores principales como <strong>Amazon Web Services</strong>, <strong>Microsoft Azure</strong> y <strong>Google Cloud Platform</strong>, además de temas clave como modelos de servicio <strong>(IaaS, PaaS, SaaS)</strong>, redes, almacenamiento, gestión de identidades (<strong>IAM</strong>), seguridad y cumplimiento. El contenido es bastante progresivo, va de lo básico a lo más aplicado, con ejemplos claros en cada plataforma. No es súper práctico, pero sí te deja con una buena base para entender cómo funcionan los servicios en la nube y cómo usarlos en escenarios reales.</p>
+
+<h2 id="conocimientos-que-debes-dominar-antes-de-rendirlo">Conocimientos que debes dominar antes de rendirlo</h2>
+
+<p>En los laboratorios del examen <strong>ICCA</strong> no solo te preguntan teoría, sino que debes demostrar que sabes usar la nube en la práctica. Es decir, debes saber realizar tareas básicas de configuración y gestión de recursos.</p>
+
+<h3 id="-tareas-típicas-que-debes-saber-hacer">🔧 Tareas típicas que debes saber hacer</h3>
+
+<ul>
+  <li><strong>Crear recursos en la nube</strong>
+    <ul>
+      <li>Crear una máquina virtual (EC2 en AWS / VM en Azure / Compute Engine en GCP)</li>
+      <li>Configurar sistema operativo, región y tamaño</li>
+    </ul>
+  </li>
+  <li><strong>Almacenamiento</strong>
+    <ul>
+      <li>Crear un bucket (S3 en AWS / Storage Account en Azure / Cloud Storage en GCP)</li>
+      <li>Subir y descargar archivos</li>
+      <li>Configurar permisos (público o privado)</li>
+    </ul>
+  </li>
+  <li><strong>Redes</strong>
+    <ul>
+      <li>Crear una red virtual (VPC / VNet)</li>
+      <li>Crear subredes</li>
+      <li>Configurar reglas de acceso:
+        <ul>
+          <li>Security Groups (AWS) / NSG (Azure)</li>
+          <li>Permitir o bloquear puertos (ej: SSH, HTTP)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Gestión de identidades (IAM)</strong>
+    <ul>
+      <li>Crear usuarios</li>
+      <li>Crear roles o políticas</li>
+      <li>Asignar permisos a recursos (ej: acceso a un bucket o VM)</li>
+    </ul>
+  </li>
+  <li><strong>Acceso a recursos</strong>
+    <ul>
+      <li>Conectarte a una VM (por SSH o RDP)</li>
+      <li>Usar claves o credenciales correctamente</li>
+    </ul>
+  </li>
+  <li><strong>Uso de consola, CLI o Cloud Shell</strong>
+    <ul>
+      <li>Ejecutar comandos básicos como:
+        <ul>
+          <li>listar instancias</li>
+          <li>ver recursos creados</li>
+        </ul>
+      </li>
+      <li>Entender diferencias entre consola web y línea de comandos</li>
+    </ul>
+  </li>
+  <li><strong>Monitoreo básico</strong>
+    <ul>
+      <li>Ver métricas o logs (CloudWatch en AWS)</li>
+      <li>Identificar si un recurso está activo o detenido</li>
+    </ul>
+  </li>
+  <li><strong>Configuración de seguridad básica</strong>
+    <ul>
+      <li>No dejar recursos públicos innecesariamente</li>
+      <li>Aplicar buenas prácticas de acceso</li>
+      <li>Entender errores comunes de configuración</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Kyzk3</name></author><category term="Certificaciones" /><category term="ICCA" /><category term="Review" /><summary type="html"><![CDATA[Este artículo explica la certificación ICCA, detallando cómo es el examen, el material de estudio de INE y los conocimientos clave necesarios para entender y trabajar con servicios en la nube.]]></summary></entry><entry><title type="html">eWPT Review 2026</title><link href="http://localhost:4000/eWPT/" rel="alternate" type="text/html" title="eWPT Review 2026" /><published>2026-04-19T00:00:00-05:00</published><updated>2026-04-19T00:00:00-05:00</updated><id>http://localhost:4000/eWPT</id><content type="html" xml:base="http://localhost:4000/eWPT/"><![CDATA[<p align="center">
 <img src="/assets/certs/Cert-eWPT.png" />
 </p>
 
@@ -14,7 +95,7 @@
 
 <p>Durante el examen utilicé prácticamente las 10 horas completas, ya que al inicio me encontré con un escenario que parecía un <strong>rabbit hole</strong>: una parte sin aparente solución, pero que estaba relacionada con una pregunta que requería haber comprometido el sitio. Esto me hizo perder gran parte del tiempo probando distintas opciones sin éxito hasta que finalmente logré resolverlo. Por eso, es importante gestionar bien el tiempo, ya que aunque 10 horas parecen suficientes, es fácil quedarse estancado sin darse cuenta.</p>
 
-<p>Al terminar todas las preguntas me quedaban unos 5 minutos, por lo que decidí revisarlas pensando que el examen se enviaría automáticamente al acabarse el tiempo. Fue un error: si no envías las respuestas manualmente dentro del plazo, el sistema te califica como desaprobado. Afortunadamente, el examen incluye dos intentos, así que 30 minutos después lo volví a rendir y esta vez lo aprobé.</p>
+<p>Al terminar todas las preguntas me quedaban unos 5 minutos, por lo que decidí revisarlas pensando que el examen se enviaría automáticamente al acabarse el tiempo. Fue un error: si no envías las respuestas manualmente dentro del plazo, el sistema te califica como desaprobado. Afortunadamente, el examen incluye dos intentos, así que al dia siguiente lo volví a rendir y esta vez lo aprobé.</p>
 
 <h2 id="impresiones-del-examen">Impresiones del examen</h2>
 

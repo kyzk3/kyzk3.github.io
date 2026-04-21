@@ -23,4 +23,9 @@ var store = [{
         "excerpt":"¿Cómo es el examen? El eWPT es un examen práctico compuesto por 50 preguntas tipo test que deben resolverse en un plazo de 10 horas. Se desarrolla en un laboratorio que incluye entre 3 y 5 hosts, donde cada uno puede exponer múltiples servicios HTTP en distintos puertos. Además, es...","categories": ["Certificaciones"],
         "tags": ["eWPTv2","Review"],
         "url": "http://localhost:4000/eWPT/",
-        "teaser":"http://localhost:4000/assets/images/INE/ewpt-certification.png"}]
+        "teaser":"http://localhost:4000/assets/images/INE/ewpt-certification.png"},{
+        "title": "ICCA Review 2026",
+        "excerpt":"¿Cómo es el examen? El examen de la certificación ICCA tiene una duración de 1 hora y media y consta de 46 preguntas tipo test junto con 4 objetivos prácticos en laboratorio. Evalúa conceptos fundamentales de computación en la nube y el uso de plataformas como Amazon Web Services, Microsoft...","categories": ["Certificaciones"],
+        "tags": ["ICCA","Review"],
+        "url": "http://localhost:4000/ICCA/",
+        "teaser":"http://localhost:4000/assets/images/INE/icca-certification.png"}]
