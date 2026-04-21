@@ -18,4 +18,9 @@ var store = [{
         "excerpt":"¿Cómo es el examen? El eJPT es un examen práctico compuesto por 35 preguntas tipo test que deben resolverse en un plazo de 48 horas. Se desarrolla desde una máquina Kali Linux accesible mediante el navegador a través de Guacamole; esta máquina no tiene acceso a internet, aunque realmente no...","categories": ["Certificaciones"],
         "tags": ["eJPTv2","Review"],
         "url": "http://localhost:4000/eJPT/",
-        "teaser":"http://localhost:4000/assets/images/INE/ejpt-certification.svg"}]
+        "teaser":"http://localhost:4000/assets/images/INE/ejpt-certification.svg"},{
+        "title": "eWPT Review 2026",
+        "excerpt":"¿Cómo es el examen? El eWPT es un examen práctico compuesto por 50 preguntas tipo test que deben resolverse en un plazo de 10 horas. Se desarrolla en un laboratorio que incluye entre 3 y 5 hosts, donde cada uno puede exponer múltiples servicios HTTP en distintos puertos. Además, es...","categories": ["Certificaciones"],
+        "tags": ["eWPTv2","Review"],
+        "url": "http://localhost:4000/eWPT/",
+        "teaser":"http://localhost:4000/assets/images/INE/ewpt-certification.png"}]

