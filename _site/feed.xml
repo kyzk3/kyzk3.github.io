@@ -1,4 +1,233 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-04-21T12:04:20-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">ICCA Review 2026</title><link href="http://localhost:4000/ICCA/" rel="alternate" type="text/html" title="ICCA Review 2026" /><published>2026-04-21T00:00:00-05:00</published><updated>2026-04-21T00:00:00-05:00</updated><id>http://localhost:4000/ICCA</id><content type="html" xml:base="http://localhost:4000/ICCA/"><![CDATA[<p align="center">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-06-09T19:49:58-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Pwn3t | Ciberseguridad y Hacking Ético</title><subtitle>Artículos sobre ciberseguridad y CTFs</subtitle><author><name>Kyzk3</name></author><entry><title type="html">NASA - VDP</title><link href="http://localhost:4000/NASA_VDP/" rel="alternate" type="text/html" title="NASA - VDP" /><published>2026-06-08T00:00:00-05:00</published><updated>2026-06-08T00:00:00-05:00</updated><id>http://localhost:4000/NASA_VDP</id><content type="html" xml:base="http://localhost:4000/NASA_VDP/"><![CDATA[<p align="center">
+<img src="/assets/images/NASA/VDP-Letter-of-Recognition.jpg" />
+</p>
+
+<h2 id="descripción">Descripción</h2>
+
+<p>La NASA dispone de un programa de <strong>Vulnerability Disclosure Program (VDP)</strong> en la plataforma <strong>Bugcrowd</strong>, el cual permite a cualquier investigador reportar vulnerabilidades en los activos autorizados. Su alcance es especialmente amplio, ya que incluye todos los subdominios bajo <code class="language-plaintext highlighter-rouge">*.nasa.gov</code>, una superficie de ataque compuesta por cientos de aplicaciones y servicios, algunos de ellos heredados o desactualizados. Para obtener una carta de reconocimiento es necesario identificar y reportar una vulnerabilidad válida con severidad <strong>P1-P4</strong>, la cual debe ser validada, aceptada y posteriormente confirmada como corregida por el equipo de seguridad de la NASA.</p>
+
+<hr />
+
+<h2 id="experiencia-durante-el-programa">Experiencia durante el programa</h2>
+
+<p>Cuando inicié la búsqueda de vulnerabilidades en la <strong>NASA</strong>, ya contaba con experiencia resolviendo <strong>CTFs</strong>. Había completado aproximadamente 100 máquinas de Hack The Box y tenía conocimientos sobre las vulnerabilidades web más comunes.</p>
+
+<p>En este programa, mi proceso de reconocimiento duró aproximadamente dos meses. Durante ese tiempo me dediqué a identificar subdominios activos y, de forma manual, analizar si contaban con alguna funcionalidad interesante, como paneles de registro, formularios de búsqueda, gestión de usuarios autenticados o solicitudes HTTP POST enviadas desde formularios.</p>
+
+<p>La mayoría de los sitios que encontraba eran páginas estáticas que únicamente mostraban artículos o incluían un campo de búsqueda. Después de verificar que no fueran vulnerables a <strong>XSS</strong>, continuaba buscando otros subdominios. En otros casos encontraba aplicaciones que enviaban datos mediante peticiones POST, pero tras realizar diversas pruebas tampoco lograba identificar vulnerabilidades. Este fue el proceso que repetí durante esos dos meses.</p>
+
+<p>Finalmente encontré una aplicación que permitía registrarse y autenticarse. Además, los usuarios podían solicitar un token utilizado para realizar búsquedas dentro de la plataforma y contaban con varias opciones para gestionarlo, como eliminarlo, generar uno nuevo o recibir el token activo por correo electrónico.</p>
+
+<p>El mismo día que encontré este subdominio descubrí que la funcionalidad de eliminación de tokens era vulnerable a un <strong>IDOR</strong> (Insecure Direct Object Reference), lo que permitía eliminar los tokens de otros usuarios.</p>
+
+<p>Desde mi experiencia, encontrar una vulnerabilidad en un programa tan amplio como el de la <strong>NASA</strong> depende en gran medida del reconocimiento. Considero que aproximadamente el <strong>90%</strong> del tiempo se invierte en identificar activos interesantes y funcionalidades con potencial de explotación, mientras que el <strong>10%</strong> restante corresponde al conocimiento técnico necesario para detectar y validar la vulnerabilidad.</p>
+
+<p>Llegué a esta conclusión porque lo que más tiempo me tomó no fue encontrar el fallo en sí, sino localizar una aplicación con suficientes funcionalidades para poder probar distintos tipos de vulnerabilidades. Una vez encontrada una superficie de ataque adecuada, las posibilidades de descubrir un hallazgo válido aumentan considerablemente.</p>
+
+<h2 id="impresiones-del-programa">Impresiones del programa</h2>
+
+<p>Este programa fue mi primer acercamiento a un entorno real de búsqueda de vulnerabilidades. El proceso fue bastante tedioso en algunos momentos, pero también aprendí mucho durante el camino.</p>
+
+<p>Algo que me gustó bastante fue que el alcance del programa fuera tan amplio. Gracias a eso pude encontrar una gran variedad de páginas con diferentes tecnologías, plugins y versiones. Creo que es una muy buena opción para quienes quieren dar sus primeros pasos en este tipo de programas, ya que te obliga a enfrentarte a situaciones que no suelen aparecer en los laboratorios o <strong>CTFs</strong>.</p>
+
+<p>Durante la búsqueda tuve que lidiar con la frustración de pasar mucho tiempo sin encontrar nada. En un programa con tantos activos es normal ir saltando de una página a otra, analizando tecnologías diferentes en cada una, lo que a veces puede generar algo de desorden o confusión. Sin embargo, también está la otra cara de la moneda: la emoción de descubrir una funcionalidad interesante o encontrar una posible vulnerabilidad después de horas o incluso días de búsqueda.</p>
+
+<p>En general, considero que fue una muy buena experiencia y aprendí bastante sobre cómo es realmente el proceso de reconocimiento en un entorno real. Lo único que me resultó un poco incómodo fue el tiempo de espera para recibir la carta de reconocimiento. Después de enviar mi reporte, la vulnerabilidad fue corregida en tan solo nueve días, pero la carta tardó  unos dos meses en llegar.</p>
+
+<p>No sé si ese tiempo es el habitual , pero personalmente considero que dos meses es bastante tiempo, sobre todo teniendo en cuenta que la vulnerabilidad fue solucionada muy rápido. Entiendo que deben gestionar muchos reportes y realizar distintos procesos internos, por lo que la demora es comprensible. Aun así, ese fue el único aspecto que me generó cierta incomodidad durante mi participación en el programa.</p>
+
+<h2 id="reconocimiento">Reconocimiento</h2>
+
+<p>Como comentamos anteriormente, al tratarse de un programa con un alcance tan amplio y compuesto por una gran cantidad de páginas estáticas y sistemas heredados, es fundamental encontrar objetivos que cuenten con funcionalidades interesantes para analizar.</p>
+
+<p>El primer paso será identificar todos los subdominios activos de la NASA. A partir de ellos podremos comenzar el proceso de reconocimiento y filtrar aquellos que presenten funcionalidades con potencial para encontrar vulnerabilidades.</p>
+
+<h3 id="subdominios-de-forma-pasiva">Subdominios de forma pasiva</h3>
+
+<p>Podemos utilizar una combinación de <strong>Subfinder</strong> y <strong>httpx</strong> para identificar subdominios activos. <strong>Subfinder</strong> se encarga de recopilar subdominios de forma pasiva a partir de diferentes fuentes públicas, mientras que <strong>httpx</strong> permite verificar cuáles de esos subdominios están respondiendo y, por lo tanto, se encuentran activos.</p>
+
+<p>De esta forma obtenemos una lista inicial de objetivos válidos sobre los que podremos comenzar el proceso de reconocimiento.</p>
+
+<ul>
+  <li><strong>a.</strong> Descubrir subdominios de forma pasiva</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>subfinder <span class="nt">-d</span> nasa.gov <span class="nt">-o</span> subdomains.txt
+</code></pre></div></div>
+
+<ul>
+  <li><strong>b.</strong> Con <code class="language-plaintext highlighter-rouge">httpx</code> filtramos por subdominios activos</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>subdomains.txt | httpx <span class="nt">-silent</span> <span class="nt">-o</span> active_subdomains.txt
+</code></pre></div></div>
+
+<h3 id="google-dorks">Google Dorks</h3>
+
+<p>Otra fuente de información útil durante la fase de reconocimiento son las búsquedas avanzadas en Google, conocidas como <strong>Google Dorks</strong>. Estas permiten filtrar resultados para encontrar información específica, como archivos, directorios, páginas de inicio de sesión, tecnologías utilizadas o cualquier otro recurso que pueda resultar interesante durante el análisis.</p>
+
+<p>A continuación veremos algunos ejemplos de búsquedas que pueden ayudarnos a identificar información relevante dentro del alcance del programa.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">site</span><span class="p">:</span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="p">.</span><span class="n">nasa</span><span class="p">.</span><span class="n">gov</span>
+<span class="n">site</span><span class="p">:</span><span class="n">nasa</span><span class="p">.</span><span class="n">gov</span> <span class="n">intitle</span><span class="p">:</span><span class="s">"index of"</span>
+<span class="n">site</span><span class="p">:</span><span class="n">nasa</span><span class="p">.</span><span class="n">gov</span> <span class="p">(</span><span class="s">"api_key"</span> <span class="o">|</span> <span class="s">"apikey"</span> <span class="o">|</span> <span class="s">"api_secret"</span> <span class="o">|</span> <span class="s">"access_token"</span> <span class="o">|</span> <span class="s">"secret_key"</span> <span class="s">"api_key"</span><span class="p">)</span>
+<span class="n">site</span><span class="p">:</span><span class="n">nasa</span><span class="p">.</span><span class="n">gov</span> <span class="p">(</span><span class="s">"aws_access_key_id"</span> <span class="o">|</span> <span class="s">"aws_secret_access_key"</span> <span class="o">|</span> <span class="s">"AKIA"</span> <span class="o">|</span> <span class="s">"S3_BUCKET"</span><span class="p">)</span>
+<span class="n">site</span><span class="p">:</span><span class="n">nasa</span><span class="p">.</span><span class="n">gov</span> <span class="p">(</span><span class="s">"DB_PASSWORD"</span> <span class="o">|</span> <span class="s">"DB_HOST"</span> <span class="o">|</span> <span class="s">"DB_USER"</span> <span class="o">|</span> <span class="s">"connection string"</span> <span class="o">|</span> <span class="s">"mysql://"</span> <span class="o">|</span> <span class="s">"mongodb://"</span><span class="p">)</span>
+</code></pre></div></div>
+<h3 id="katana">Katana</h3>
+
+<p><strong>Katana</strong> es una herramienta de rastreo web (<strong>crawler</strong>) que permite recorrer automáticamente un sitio web para descubrir páginas, directorios, parámetros, archivos JavaScript y endpoints ocultos. La utilizaremos para mapear la superficie de ataque, identificar funcionalidades expuestas y localizar recursos que podrían contener vulnerabilidades o configuraciones inseguras.</p>
+
+<p>Esta herramienta resulta especialmente útil durante la fase de reconocimiento, ya que permite obtener una visión más completa de la estructura de una aplicación y descubrir contenido que no siempre es visible durante una navegación manual.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>katana <span class="nt">-u</span> https://www.nasa.gov <span class="nt">-d</span> 5 <span class="nt">-silent</span> <span class="nt">-o</span> nasa_urls.txt
+</code></pre></div></div>
+
+<h2 id="estructura-del-reporte-enviado">Estructura del reporte enviado</h2>
+
+<p>Por motivos de confidencialidad y para evitar divulgar información sensible, he reemplazado el contenido original por un ejemplo más genérico. Sin embargo, la estructura, metodología y flujo del reporte son los mismos que utilicé en el informe original.</p>
+
+<hr />
+<hr />
+
+<p><strong>VRT:</strong> <code class="language-plaintext highlighter-rouge">broken_access_control.idor.modify_sensitive_information_iterable_object_identifiers</code>
+<br />
+<strong>Prioridad:</strong> <code class="language-plaintext highlighter-rouge">P2</code></p>
+
+<h2 id="resumen">Resumen</h2>
+
+<p>Existe una vulnerabilidad de Referencia Directa a Objetos Insegura <strong>IDOR</strong>* en la funcionalidad de eliminación del <code class="language-plaintext highlighter-rouge">TOKEN</code> de usuario, necesario para realizar busquedas en la web.</p>
+
+<p>Tras autenticarse correctamente, el usuario puede realizar acciones delicadas como eliminar su <code class="language-plaintext highlighter-rouge">TOKEN</code>. Sin embargo, la aplicación utiliza una cookie controlada por el cliente <code class="language-plaintext highlighter-rouge">PARAMS</code> para identificar el correo electrónico de destino asociado a la acción.</p>
+
+<p>Al interceptar la solicitud y modificar el <strong>email</strong>, parámetro dentro de esta cookie, un atacante puede eliminar el <code class="language-plaintext highlighter-rouge">TOKEN</code> de cualquier usuario arbitrario sin autorización.</p>
+
+<p>El servidor no valida si la acción solicitada se está realizando en nombre del usuario autenticado, lo que conlleva una completa falta de control de autorización a nivel de objeto.</p>
+
+<h2 id="impacto">Impacto</h2>
+
+<p>Esta vulnerabilidad permite a un atacante:</p>
+
+<ul>
+  <li>Eliminar los tokens de cualquier usuario</li>
+  <li>Provocar una denegación de servicio <strong>(DoS)</strong> impidiendo que las víctimas accedan a la funcionalidad de la API.</li>
+</ul>
+
+<h3 id="escenario-de-ataque">Escenario de ataque:</h3>
+
+<p><strong>Un atacante:</strong></p>
+
+<ol>
+  <li>Se autentica usando su propio correo electrónico.</li>
+  <li>Intercepta una solicitud para eliminar su propio <strong>TOKEN</strong>.</li>
+  <li>Modifica el campo <strong>email</strong> en la cookie <code class="language-plaintext highlighter-rouge">PARAMS</code>.</li>
+  <li>Envía la solicitud para eliminar el <strong>TOKEN</strong> de otro usuario.</li>
+</ol>
+
+<p>Este ataque puede automatizarse para afectar a múltiples usuarios a gran escala.</p>
+
+<h3 id="prueba-de-concepto-poc">Prueba de concepto (PoC)</h3>
+
+<p><strong>Requisitos previos</strong></p>
+<ul>
+  <li>Una cuenta válida (correo electrónico del atacante)</li>
+  <li>Interceptor proxy (por ejemplo, CAIDO)</li>
+  <li>Una segunda cuenta de prueba (víctima) con un <strong>TOKEN</strong> activo.</li>
+</ul>
+
+<h3 id="pasos-para-reproducir">Pasos para reproducir</h3>
+
+<p><strong>Correo electrónico del atacante</strong> : xerothermic.flyingfish.geod@hidingmail.com <br />
+<strong>Correo electrónico de la víctima</strong> : wispy.iguana.znwv@hidingmail.com</p>
+
+<p><strong>I.</strong> Solicite un <code class="language-plaintext highlighter-rouge">TOKEN</code> proporcionando una dirección de correo electrónico valido</p>
+
+<p><strong>Realice este paso para ambos:</strong></p>
+
+<ul>
+  <li>Correo electrónico del atacante</li>
+  <li>Correo electrónico de la víctima (obligatorio para que la víctima tenga un <strong>TOKEN</strong> activa)</li>
+</ul>
+
+<p><strong>II.</strong> Navegue a la página de autenticación:</p>
+
+<p><strong>III.</strong> Introduce el correo electrónico del atacante y completa el proceso de verificación de 6 dígitos que se te enviará por correo electrónico.</p>
+
+<p><strong>IV.</strong> Una vez autenticado, acceda al panel de control donde encontrará las siguientes opciones:</p>
+
+<ul>
+  <li>Reenviar token</li>
+  <li>Generar nuevo token</li>
+  <li>Eliminar token</li>
+</ul>
+
+<p><strong>V.</strong> Haga clic en “Eliminar token” e intercepte la solicitud HTTP utilizando una herramienta proxy (por ejemplo, Caido).</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/api/token/</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">test.test1.nasa.gov</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">34</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">*/*</span>
+<span class="na">Origin</span><span class="p">:</span> <span class="s">https://test.test1.nasa.gov</span>
+<span class="na">Sec-Fetch-Site</span><span class="p">:</span> <span class="s">same-origin</span>
+<span class="na">Sec-Fetch-Mode</span><span class="p">:</span> <span class="s">cors</span>
+<span class="na">Sec-Fetch-Dest</span><span class="p">:</span> <span class="s">empty</span>
+<span class="na">Referer</span><span class="p">:</span> <span class="s">https://test.test1.nasa.gov</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, br, zstd</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">es-US,es-419;q=0.9,es;q=0.8</span>
+<span class="na">Cookie</span><span class="p">:</span> <span class="s">PARAMS={"time":"0.11235600 1745956330","email":"xerothermic.flyingfish.geod@hidingmail.com"}</span>
+
+<span class="p">{</span><span class="nl">"site"</span><span class="p">:</span><span class="s2">"firms"</span><span class="p">,</span><span class="nl">"action"</span><span class="p">:</span><span class="s2">"DELETE"</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>VI.</strong> Localice la siguiente cookie en la solicitud y modifique el campo <code class="language-plaintext highlighter-rouge">email</code> con el correo electrónico de la víctima:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">PARAMS=</span><span class="p">{</span><span class="nl">"time"</span><span class="p">:</span><span class="s2">"0.11235600 1745956330"</span><span class="p">,</span><span class="nl">"email"</span><span class="p">:</span><span class="s2">"wispy.iguana.znwv@hidingmail.com"</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>VII.</strong> Envíe la solicitud modificada.</p>
+
+<p><strong>VIII.</strong> Observe que:</p>
+
+<ul>
+  <li>El <code class="language-plaintext highlighter-rouge">TOKEN</code> de la víctima se ha eliminado correctamente.</li>
+  <li>No se requiere ningún código de verificación ni comprobación de autorización para la cuenta de la víctima.</li>
+</ul>
+
+<h3 id="causa-principal">Causa principal</h3>
+
+<ul>
+  <li>La aplicación confía en los datos controlados por el cliente <strong>(cookies)</strong> para tomar decisiones de autorización.</li>
+  <li>No existe ninguna validación del lado del servidor que vincule la sesión autenticada con el correo electrónico en la solicitud.</li>
+  <li>Faltan comprobaciones de control de acceso a nivel de objeto.</li>
+</ul>
+
+<h2 id="remediación">Remediación</h2>
+
+<p><strong>Para solucionar este problema:</strong></p>
+
+<ul>
+  <li>No confíe en las entradas controladas por el cliente <strong>(cookies)</strong> para la autorización.</li>
+  <li>La identidad del usuario debe derivarse estrictamente de la sesión del servidor.</li>
+  <li>Asegúrese de que el recurso solicitado <strong>(TOKEN)</strong> pertenece al usuario autenticado.</li>
+</ul>
+
+<hr />
+<hr />
+<h2 id="conclusiones-y-recomendaciones">Conclusiones y Recomendaciones</h2>
+
+<ul>
+  <li>
+    <p>Si estás iniciando en el mundo del hacking, te animo a intentar encontrar una vulnerabilidad en este programa. Al principio puede parecer que no existen vulnerabilidades o que nunca encontrarás nada, pero es importante ser constante. El proceso de reconocimiento suele ser largo y, en ocasiones, tedioso. Mi recomendación es centrarte en aplicaciones que tengan funcionalidades interesantes, ya que muchos dominios son páginas estáticas donde hay poco que analizar. Una vez encuentres una aplicación con funcionalidades, puedes comenzar a probar vulnerabilidades comunes como XSS, IDOR, Open Redirect, SSRF, entre otras.</p>
+  </li>
+  <li>
+    <p>También recomendaría empezar lo antes posible. Cada día se reportan nuevas vulnerabilidades dentro del programa, lo que significa que, con el paso del tiempo, las oportunidades más evidentes suelen desaparecer. Cuanto antes comiences, más posibilidades tendrás de encontrar un hallazgo válido.</p>
+  </li>
+  <li>
+    <p>Para encontrar una vulnerabilidad en este programa no es necesario contar con conocimientos extremadamente avanzados ni poseer múltiples certificaciones. Si tienes experiencia resolviendo CTFs y conoces las vulnerabilidades más comunes del OWASP Top 10, ya cuentas con una buena base para comenzar. Desde mi experiencia, la parte más difícil no fue identificar la vulnerabilidad, sino realizar el reconocimiento y encontrar el objetivo adecuado sobre el cual invertir tiempo y esfuerzo.</p>
+  </li>
+</ul>]]></content><author><name>Kyzk3</name></author><category term="NASA" /><category term="VDP" /><category term="Bug Bounty" /><summary type="html"><![CDATA[Este artículo relata mi experiencia obteniendo la certificación NASA VDP, describiendo el proceso de participación, la dificultad del programa, la metodología utilizada para identificar una vulnerabilidad válida y el informe técnico enviado para su validación y reconocimiento.]]></summary></entry><entry><title type="html">ICCA Review 2026</title><link href="http://localhost:4000/ICCA/" rel="alternate" type="text/html" title="ICCA Review 2026" /><published>2026-04-21T00:00:00-05:00</published><updated>2026-04-21T00:00:00-05:00</updated><id>http://localhost:4000/ICCA</id><content type="html" xml:base="http://localhost:4000/ICCA/"><![CDATA[<p align="center">
 <img src="/assets/certs/Cert-ICCA.png" />
 </p>
 

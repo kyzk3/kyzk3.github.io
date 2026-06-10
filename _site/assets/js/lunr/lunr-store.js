@@ -28,4 +28,9 @@ var store = [{
         "excerpt":"¿Cómo es el examen? El examen de la certificación ICCA tiene una duración de 1 hora y media y consta de 46 preguntas tipo test junto con 4 objetivos prácticos en laboratorio. Evalúa conceptos fundamentales de computación en la nube y el uso de plataformas como Amazon Web Services, Microsoft...","categories": ["Certificaciones"],
         "tags": ["ICCA","Review"],
         "url": "http://localhost:4000/ICCA/",
-        "teaser":"http://localhost:4000/assets/images/INE/icca-certification.png"}]
+        "teaser":"http://localhost:4000/assets/images/INE/icca-certification.png"},{
+        "title": "NASA - VDP",
+        "excerpt":"Descripción La NASA dispone de un programa de Vulnerability Disclosure Program (VDP) en la plataforma Bugcrowd, el cual permite a cualquier investigador reportar vulnerabilidades en los activos autorizados. Su alcance es especialmente amplio, ya que incluye todos los subdominios bajo *.nasa.gov, una superficie de ataque compuesta por cientos de aplicaciones...","categories": ["NASA","VDP"],
+        "tags": ["Bug Bounty"],
+        "url": "http://localhost:4000/NASA_VDP/",
+        "teaser":"http://localhost:4000/assets/images/NASA/nasa_logo.png"}]

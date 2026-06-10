@@ -12,13 +12,11 @@ date: 2025-11-14
 </p>
 
 <br>
-Mi nombre es Dehymar Torres (alias **Kyzk3**). Empecé mis estudios en la carrera de Ingeniería de Sistemas en el año 2021. A inicios del 2024 me empecé a interesar por la ciberseguridad. Al investigar, me empezó a gustar este mundo de la ciberseguridad ofensiva y cómo uno podía vulnerar una máquina entendiendo cómo funcionan los sistemas y cómo pequeños errores pueden derivar en fallas graves de seguridad.
+Mi nombre es **Dehymar Torres** (alias **Kyzk3**). Empecé mis estudios en la carrera de Ingeniería de Sistemas en el año 2021. A inicios del 2024 me empecé a interesar por la ciberseguridad. Al investigar, me empezó a gustar este mundo de la ciberseguridad ofensiva y cómo uno podía vulnerar una máquina entendiendo cómo funcionan los sistemas y cómo pequeños errores pueden derivar en fallas graves de seguridad.
 
 A la par que estudiaba mi carrera, practicaba conceptos y resolvía máquinas. Al terminar el séptimo ciclo (3 años y medio) en diciembre del 2024, decidí hacer una pausa en mis estudios universitarios y meterme de lleno a la ciberseguridad de forma autodidacta.  
 
-A inicios del 2025 ingresé a la academia de **S4vitar**, **hack4u.io**. La academia me dio una muy buena base en ciberseguridad ofensiva y, a la vez, practicaba en entornos controlados.
-
-Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran comunicador y un referente en ciberseguridad forense.
+A inicios de 2025 comencé a practicar en la plataforma **hack4u.io**, creada por **S4vitar**. Sus cursos me proporcionaron una muy buena base en ciberseguridad ofensiva y, al mismo tiempo, me permitieron adquirir experiencia práctica en entornos controlados.
 
 ## Experiencia en Plataformas de Pentesting
 
@@ -41,7 +39,7 @@ Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran com
 - [eJPT](/assets/certs/Cert-eJPT.png) (eLearnSecurity Junior Penetration Tester) 
 - [ICCA](/assets/certs/Cert-ICCA.png) (Certified Cloud Associate)
 - [eWPT](/assets/certs/Cert-eWPT.png) (eLearnSecurity Web Application Penetration Tester)
-- CPTS (HTB Certified Penetration Testing Specialist) (Junio 2026)
+- CPTS (HTB Certified Penetration Testing Specialist) (Agosto 2026)
 
 ## Competencias Técnicas
 
@@ -59,17 +57,17 @@ Actualmente estoy estudiando en el Master **Zero Day** de **Hackavis**, gran com
 
 - **Ingeniería de Sistemas** — 7 ciclos completados (2021–2024).  
 - **Academia Hack4u** — Formación en ciberseguridad ofensiva (2025).  
-- **Máster Zero Day (Hackavis)** — Especialización en ciberseguridad.
+- **Hack The Box Academy** - Preparación para la **CPTS**.
 
 <br> <br>
 <!-- <p align="center"> -->
 <!-- <img src="/assets/images/about/Author_Logo.png"> -->
 <!-- </p> -->
 
-<!-- ## Experiencia 
+## Experiencia 
 
-Coming soon
--->
+- Reporte y validación de una vulnerabilidad de severidad `P2` en el programa de **Vulnerability Disclosure Program (VDP)** de la **NASA**.
+- Realización de auditorías de seguridad web como Pentester Web Freelance.
 
 # Correo y contacto directo
 
